@@ -26,6 +26,12 @@ class DatabaseSeeder extends Seeder
             'password' => Hash::make('12345678'),
             'role' => 'Resepsionis',
         ]);
+        DB::table('room_tipes')->insert([
+            'nama'=>'Superior'
+        ]);
+        DB::table('room_tipes')->insert([
+            'nama'=>'Deluxe'
+        ]);
         DB::table('rooms')->insert([
             'kode_kamar' => 'ROSE01',
             'gambar' => 'zZE3NfSyhT4lpMTFP1fNKvJkLrjHujvk1AZ8LCc5.jpg',
@@ -34,6 +40,7 @@ class DatabaseSeeder extends Seeder
             'tgl_tersedia' => '2022-03-16',
             'harga' => '500000',
             'status' => '1',
+            'id_room_tipe' => '1',
         ]);
     }
 }

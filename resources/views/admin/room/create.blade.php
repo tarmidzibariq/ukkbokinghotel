@@ -19,6 +19,17 @@
                     <label for="" class="form-label">Kode Rooms</label>
                     <input type="text" class="form-control" name="kode_kamar" value="{{ 'ROSE0'.$room }}" readonly>
                 </div>
+                <div class="col-12 mt-2">
+                    <label for="" class="form-label">Tipe Rooms</label>
+                    <div class="card p-1">
+                        <select name="id_room_tipe" id="select" class="form-control " required>
+                            <option value="" selected>--Chose One--</option>
+                            @foreach ($roomtipe as $item)
+                                <option value="{{ $item->id }}">{{ $item->nama }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
                 <div class="col-lg-4 mt-2">
                     <label for="" class="form-label">Open Date</label>
                     <input type="date" class="form-control" name="tgl_tersedia" required>
@@ -57,23 +68,31 @@
     </form>
 </div>
 <script type="text/javascript">
-        var tm_pilih = document.getElementById('pilih');
-        var file = document.getElementById('file');
-        tm_pilih.addEventListener('click', function () {
-            file.click();
-        })
-        file.addEventListener('change', function () {
-            gambar(this);
-        })
-        function gambar(a) {
-            if (a.files && a.files[0]) {     
-                 var reader = new FileReader();    
-                 reader.onload = function (e) {
-                     document.getElementById('gambar').src=e.target.result;
-                 }    
-                 reader.readAsDataURL(a.files[0]);
-            }
-
+    var tm_pilih = document.getElementById('pilih');
+    var file = document.getElementById('file');
+    tm_pilih.addEventListener('click', function () {
+        file.click();
+    })
+    file.addEventListener('change', function () {
+        gambar(this);
+    })
+    function gambar(a) {
+        if (a.files && a.files[0]) {     
+                var reader = new FileReader();    
+                reader.onload = function (e) {
+                    document.getElementById('gambar').src=e.target.result;
+                }    
+                reader.readAsDataURL(a.files[0]);
         }
-    </script>
+
+    }
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<script>
+    $('#select').select2({
+        placeholder: "Chose One",
+        allowClear: true
+    });
+</script>
 @endsection

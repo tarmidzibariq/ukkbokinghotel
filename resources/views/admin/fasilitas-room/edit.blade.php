@@ -1,8 +1,17 @@
 @extends('master')
 @section('content')
+<style>
+    .btn-outline{
+        color: rgba(0,0,0,.5);
+        transition: 0.5s;
+    }
+    .btn-outline:hover{
+        color: #4e73df;
+    }
+</style>
 <div class="card mb-4">
     <div class="card-header">
-        <i class="fas fa-folder-plus fa-sm text-black-50"></i>&nbsp; Add Data
+        <a href="{{ route('facility-room.index') }}" class=" "><i class="fas fa-backspace fa-sm btn-outline "></a></i>&nbsp; <span>Edit Data</span>
     </div>
     <form action="{{ route('facility-room.update',$facilityroom->id) }}" method="post" enctype="multipart/form-data">
         @csrf

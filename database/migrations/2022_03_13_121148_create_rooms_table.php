@@ -23,6 +23,7 @@ class CreateRoomsTable extends Migration
             // $table->date('tgl_tutup');
             $table->integer('harga');
             $table->string('status'); // 1 atau 2 dan 3
+            $table->integer('id_room_tipe');
             $table->timestamps();
         });
     }

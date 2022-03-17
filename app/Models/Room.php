@@ -16,6 +16,7 @@ class Room extends Model
         'tgl_tersedia',
         'harga',
         'status',
+        'id_room_tipe',
 
     ];
     protected $table = 'rooms';
@@ -27,5 +28,9 @@ class Room extends Model
     public function Reservation()
     {
         return $this->hasMany('App\Models\Reservation');
-    }  
+    }
+    public function rooms()
+    {
+        return $this->belongsTo('App\Models\Roomtipe', 'id_room_tipe', 'id');
+    }
 }

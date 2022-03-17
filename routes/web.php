@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RoomController;
 use App\Http\Controllers\FacilityHotelsController;
 use App\Http\Controllers\FacilityRoomController;
+use App\Http\Controllers\RoomTipeController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -28,6 +29,26 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 // rooms admin
 Route::group(['prefix' =>'room','as'=>'room.','middleware'=>'checkRole:admin'],function(){
+    Route::get('/', [RoomController::class, 'index'])->name('index');
+    Route::get('/create', [RoomController::class, 'create'])->name('create');
+    Route::post('/store', [RoomController::class, 'store'])->name('store');
+    Route::post('/active/{id}', [RoomController::class, 'active'])->name('active');
+    Route::post('/nonactive/{id}', [RoomController::class, 'nonactive'])->name('nonactive');
+    Route::get('/edit/{id}', [RoomController::class, 'edit'])->name('edit');
+    Route::post('/update/{id}', [RoomController::class, 'update'])->name('update');
+    Route::post('/destroy/{id}', [RoomController::class, 'destroy'])->name('destroy');
+});
+
+// rooms admin
+Route::group(['prefix' =>'room-tipe','as'=>'room-tipe.','middleware'=>'checkRole:admin'],function(){
+    Route::get('/', [RoomTipeController::class, 'index'])->name('index');
+    Route::get('/create', [RoomTipeController::class, 'create'])->name('create');
+    Route::post('/store', [RoomTipeController::class, 'store'])->name('store');
+    Route::post('/destroy/{id}', [RoomTipeController::class, 'destroy'])->name('destroy');
+});
+
+// rooms admin
+Route::group(['prefix' => 'room', 'as' => 'room.', 'middleware' => 'checkRole:admin'], function () {
     Route::get('/', [RoomController::class, 'index'])->name('index');
     Route::get('/create', [RoomController::class, 'create'])->name('create');
     Route::post('/store', [RoomController::class, 'store'])->name('store');

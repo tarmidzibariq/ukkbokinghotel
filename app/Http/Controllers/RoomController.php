@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Room;
+use App\Models\RoomTipe;
 use Brick\Math\BigNumber;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
@@ -37,8 +38,9 @@ class RoomController extends Controller
         // dd($random);
 
         $room = Room::all()->count()+1;
+        $roomtipe = RoomTipe::orderBy('created_at','DESC')->get();
         // dd(BigNumber($room));
-        return view('admin.room.create',compact('room'));
+        return view('admin.room.create',compact('room','roomtipe'));
     }
 
     /**
@@ -56,6 +58,7 @@ class RoomController extends Controller
             'kapasitas' => 'required',
             'harga' => 'required',
             'deskripsi' => 'required',
+            'id_room_tipe' => 'required',
             'gambar' => 'required|image|mimes:jpeg,jpg,png',
         ]);
         $gambar = $request->file('gambar');
@@ -66,6 +69,7 @@ class RoomController extends Controller
             'kapasitas' => $request->kapasitas,
             'harga' => $request->harga,
             'deskripsi' => $request->deskripsi,
+            'id_room_tipe' => $request->id_room_tipe,
             'gambar' => $gambar->hashName(),
             'status' => 0,
         ]);
@@ -92,7 +96,8 @@ class RoomController extends Controller
     public function edit($id)
     {
         $room = Room::find($id);
-        return view('admin.room.edit',compact('room'));
+        $roomtipe = RoomTipe::orderBy('created_at', 'DESC')->get();
+        return view('admin.room.edit',compact('room', 'roomtipe'));
     }
 
     /**
@@ -121,6 +126,7 @@ class RoomController extends Controller
                 'kapasitas' => $request->kapasitas,
                 'harga' => $request->harga,
                 'deskripsi' => $request->deskripsi,
+                'id_room_tipe' => $request->id_room_tipe,
                 'gambar' => $gambar->hashName(),
             ]);
         }else{
@@ -129,6 +135,7 @@ class RoomController extends Controller
                 'kapasitas' => $request->kapasitas,
                 'harga' => $request->harga,
                 'deskripsi' => $request->deskripsi,
+                'id_room_tipe' => $request->id_room_tipe,
             ]);
         }
         return redirect('room');

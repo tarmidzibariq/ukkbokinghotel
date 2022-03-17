@@ -19,7 +19,7 @@
     <div class="card-header">
         <div class="d-flex align-items-center justify-content-between ">
             <div>
-                <a href="{{ route('room.index') }}" class=" "><i class="fas fa-backspace fa-sm btn-outline "></a></i>&nbsp; <span>Add Data</span>
+                <a href="{{ route('room.index') }}" class=" "><i class="fas fa-backspace fa-sm btn-outline "></a></i>&nbsp; <span>Edit Data</span>
             </div>
             @if ($room->status == '0')
                 <a href="#" type="submit" class="btn btn-danger btn-icon-split btn-sm">
@@ -43,12 +43,28 @@
     
     <form action="{{ route('room.update',[$room->id]) }}" method="post" enctype="multipart/form-data">
         @csrf
+        @php
+            use App\Models\Room;
+            use App\Models\RoomTipe;
+            $a = RoomTipe::all();
+        @endphp
         <div class="card-body">
             <div class="row">
                 <input type="hidden" class="form-control " id="id" name="id" value="" />
                 <div class="col-12">
                     <label for="" class="form-label">Kode Rooms</label>
                     <input type="text" class="form-control" name="kode_kamar" value="{{ $room->kode_kamar }}" readonly>
+                </div>
+                 <div class="col-12 mt-2">
+                    <label for="" class="form-label">Tipe Rooms</label>
+                    <div class="card p-1">
+                        <select name="id_room_tipe" id="select" class="form-control " required>
+                            <option value="{{ $room->id_room_tipe }} " selected>{{ $a->where('id',$room->id_room_tipe)->first()->nama }}</option>
+                            @foreach ($roomtipe as $item)
+                                <option value="{{ $item->id }}">{{ $item->nama }}</option>
+                            @endforeach
+                        </select>
+                    </div>
                 </div>
                 <div class="col-lg-4 mt-2">
                     <label for="" class="form-label">Open Date</label>
@@ -106,5 +122,13 @@
         }
 
     }
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<script>
+    $('#select').select2({
+        placeholder: "Chose One",
+        allowClear: true
+    });
 </script>
 @endsection
