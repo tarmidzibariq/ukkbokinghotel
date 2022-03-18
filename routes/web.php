@@ -5,6 +5,7 @@ use App\Http\Controllers\RoomController;
 use App\Http\Controllers\FacilityHotelsController;
 use App\Http\Controllers\FacilityRoomController;
 use App\Http\Controllers\RoomTipeController;
+use App\Http\Controllers\DashboardDefaultController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,12 +17,17 @@ use App\Http\Controllers\RoomTipeController;
 |
 */
 
-Route::get('/', function () {
-    return view('defaulthome');
-});
+// Route::get('/', function () {
+//     return view('defaulthome');
+// });
 Route::get('/admin', function () {
     return view('master');
 });
+// default home
+Route::get('/', [DashboardDefaultController::class, 'index'])->name('index');
+Route::get('/store', [DashboardDefaultController::class, 'store'])->name('store');
+
+
 
 Auth::routes();
 

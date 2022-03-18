@@ -22,7 +22,7 @@
                 <a href="{{ route('room.index') }}" class=" "><i class="fas fa-backspace fa-sm btn-outline "></a></i>&nbsp; <span>Edit Data</span>
             </div>
             @if ($room->status == '0')
-                <a href="#" type="submit" class="btn btn-danger btn-icon-split btn-sm">
+                <a href="#" type="submit" class="btn btn-danger btn-icon-split btn-sm" data-toggle="modal" data-target="#active{{ $room->id }}">
                     <span class="icon text-white-50">
                         <i class="fas fa-times-circle"></i>
                     </span>
@@ -30,7 +30,7 @@
                 </a>
             @endif
             @if ($room->status == '1')
-                <a href="#" class="btn btn-success btn-icon-split btn-sm">
+                <a href="#" class="btn btn-success btn-icon-split btn-sm" data-toggle="modal" data-target="#nonactive{{ $room->id }}">
                     <span class="icon text-white-50">
                         <i class="fas fa-check"></i>
                     </span>
@@ -38,6 +38,56 @@
                 </a>
             @endif
             
+        </div>
+    </div>
+    {{-- modal active --}}
+    <div class="modal fade" id="active{{ $room->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">status update to be active?  ?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">You can "Update" data to 
+                    <a href="#" class="btn btn-success btn-icon-split btn-sm">
+                    <span class="text">Active</span>
+                    </a>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <form action="{{ route('room.active',$room->id) }}}"method="post">
+                    @csrf
+                        <button type="submit" class="btn btn-success">Update</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{-- modal nonactive --}}
+    <div class="modal fade" id="nonactive{{ $room->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">status update to be nonactive?  ?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">You can "Update" data to 
+                    <a href="#" class="btn btn-danger btn-icon-split btn-sm">
+                    <span class="text">NonActive</span>
+                    </a>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <form action="{{ route('room.nonactive',$room->id) }}}"method="post">
+                    @csrf
+                        <button type="submit" class="btn btn-success">Update</button>
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
     

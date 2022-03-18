@@ -11,6 +11,10 @@ class RoomTipeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index()
     {
         $roomtipe = RoomTipe::orderBy('created_at','DESC')->get();

@@ -18,12 +18,12 @@ class CreateReservationsTable extends Migration
             $table->string('nama');
             $table->string('email');
             $table->integer('no_telp');
+            $table->string('nama_tamu');
             $table->date('tgl_masuk');
             $table->date('tgl_keluar');
-            $table->string('dewasa');
-            $table->string('anak');
-            $table->string('bukti_cek');
-            $table->integer('id_room');
+            $table->integer('jumlah_kamar');
+            $table->integer('id_room')->nullable();
+            $table->integer('id_room_tipe')->nullable();
             $table->timestamps();
         });
     }

@@ -46,7 +46,7 @@
                         <a class="nav-link" href="#reservasi">RESERVATION</a>
                     </li>
                     <li class="nav-item ms-2">
-                        <a class="nav-link" href="#product">PRODUCT</a>
+                        <a class="nav-link" href="#product">ROOMS HOTELS</a>
                     </li>
                     {{-- <li class="nav-item ms-2">
                         <a class="nav-link button text-white px-3" href="{{ route('login') }}">LOGIN</a>
@@ -107,12 +107,12 @@
         </div>
     </section>
     <section id="about">
-        <div class="container pb-3">
+        <div class="container pb-4">
             <div class="row text-center">
                 <div class="d-flex justify-content-center ">
                     <div class="col-md-8 col-lg-6">
                         <h1 class="mb-4">About Me</h1>
-                        <p class="mb-5">
+                        <p class="mb-4">
                             Comfort and elegance come together to offer our guests a stay, that is highlighted by
                             disconnecting in a
                             wonderful environment with attention to detail.
@@ -121,7 +121,19 @@
                 </div>
             </div>
             <div class="row text-center">
-                <div class="col-lg-6 mt-lg-0 mt-3 ">
+                @foreach ($facilityhotel as $item)
+                    <div class="col-lg-6 mt-lg-0 mt-3 ">
+                        <div class="content ms-lg-5">
+                            <img src="{{ asset('storage/facilityhotel/'.$item->gambar) }}" alt="" class="">
+                            <div class="overlay">
+                                <div class="text">
+                                    <h3>{{ $item->nama_barang }}</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+                {{-- <div class="col-lg-6 mt-lg-0 mt-3 ">
                     <div class="content ms-lg-5">
                         <img src="{{ asset('image/head-1.jpg') }}" alt="" class="">
                         <div class="overlay">
@@ -140,7 +152,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> --}}
             </div>
         </div>
     </section>
@@ -160,15 +172,15 @@
                         <div class="row">
                             <div class="col-lg-6 col-xl-3 mt-3">
                                 <label for="">Nama Pemesanan</label>
-                                <input type="text" class="form-control rounded-0 border-1 border-white p-2  mt-1">
+                                <input type="text" class="form-control rounded-0 border-1 border-white p-2  mt-1" name="nama" >
                             </div>
                             <div class="col-lg-6 col-xl-3 mt-3">
                                 <label for="">Email</label>
-                                <input type="text" class="form-control rounded-0 border-1 border-white p-2  mt-1">
+                                <input type="text" class="form-control rounded-0 border-1 border-white p-2  mt-1" name="email">
                             </div>
                             <div class="col-lg-6 col-xl-3 mt-3">
                                 <label for="">No Telp</label>
-                                <input type="text" class="form-control rounded-0 border-1 border-white p-2  mt-1">
+                                <input type="text" class="form-control rounded-0 border-1 border-white p-2  mt-1" name="no_telp">
                             </div>
                             <div class="col-lg-6 col-xl-3 mt-3">
                                 <label for="">Nama Tamu</label>
@@ -206,12 +218,12 @@
             <div class="row text-center">
                 <div class="d-flex justify-content-center ">
                     <div class="col-md-8 col-lg-6">
-                        <h1 class="mb-4">Facility</h1>
-                        <p class="mb-5">
+                        <h1 class="mb-4">Rooms Hotels</h1>
+                        {{-- <p class="mb-5">
                             Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quibusdam velit iste reiciendis
                             soluta rem. Voluptatem quae voluptas exercitationem, cum obcaecati nulla sapiente, alias
                             sint nisi a esse natus totam. Ab?
-                        </p>
+                        </p> --}}
                     </div>
                 </div>
             </div>
@@ -219,33 +231,45 @@
                 <div class="d-flex justify-content-center">
                     <div class="col-md-9">
                         <div class="row">
-                            <div class="col-lg-6 mt-lg-0 mt-3">
+                            @foreach ($room as $item)
+                            <div class="col-lg-6  mt-3">
                                 <div class="card border-0">
-                                    <img src="{{ asset('image/product-3.jpg') }}" alt="" class="card-img-top">
+                                    <img src="{{ asset('storage/rooms/'.$item->gambar) }}" alt="" class="card-img-top">
                                     <div class="card-body">
                                         <div class="card-title">
                                             <div class="row justify-content-center">
                                                 <div class="col-10">
-                                                    <h3
-                                                        class="text-center border-bottom border-1 border-dark pb-2 pt-2">
-                                                        Harrison Suite</h3>
+                                                    <div class="border-bottom border-1 border-dark pb-2 pt-2 text-center  text-capitalize">
+                                                        <h3 class="m-0">{{ $roomtipe->where('id',$item->id_room_tipe)->first()->nama }}</h3>
+                                                        <p class="fs-6 m-0 mt-1">{{ $item->kode_kamar }}</p>
+                                                    </div>
                                                 </div>
                                             </div>
-                                            <ul class="list-group text-center">
-                                                <li class="list-group-item border-0 p-1">Free Champagne</li>
-                                                <li class="list-group-item border-0 p-1">Roses & Candles</li>
+                                            <ul class="list-group text-center mt-1">
+                                                {{-- @foreach ($facilityroom as $key) --}}
+                                                @php
+                                                   $a = $facilityroom->where('id_room',$item->id);
+                                                @endphp
+                                                    @foreach ($a as $key)
+                                                        <li class="list-group-item border-0 p-1 text-capitalize">{{ $key->nama_barang }} </li> 
+                                                        
+                                                    @endforeach
+                                                {{-- @endforeach --}}
+                                                {{-- <li class="list-group-item border-0 p-1">Roses & Candles</li>
                                                 <li class="list-group-item border-0 p-1">Grand Luxury Suite with Beach
                                                     View</li>
-                                                <li class="list-group-item border-0 p-1">Exlusive Boat Trip</li>
+                                                <li class="list-group-item border-0 p-1">Exlusive Boat Trip</li> --}}
                                             </ul>
                                             <div class="d-flex justify-content-end">
-                                                <button class="button mt-3">Rp 50.000</button>
+                                                <button class="button mt-3">Rp {{ number_format($item->harga) }}</button>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-6 mt-lg-0 mt-3">
+                                
+                            @endforeach
+                            {{-- <div class="col-lg-6 mt-lg-0 mt-3">
                                 <div class="card border-0">
                                     <img src="{{ asset('image/product-4.jpg') }}" alt="" class="card-img-top">
                                     <div class="card-body">
@@ -271,7 +295,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                 </div>

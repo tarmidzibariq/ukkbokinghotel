@@ -34,13 +34,31 @@ class DatabaseSeeder extends Seeder
         ]);
         DB::table('rooms')->insert([
             'kode_kamar' => 'ROSE01',
-            'gambar' => 'zZE3NfSyhT4lpMTFP1fNKvJkLrjHujvk1AZ8LCc5.jpg',
+            'gambar' => 'roomhotel1.jpg',
             'deskripsi' => 'dengan ruangan yang mewah dan pelayanan yang terbaik',
             'kapasitas' => '2',
             'tgl_tersedia' => '2022-03-16',
             'harga' => '500000',
             'status' => '1',
             'id_room_tipe' => '1',
+        ]);
+        DB::table('rooms')->insert([
+            'kode_kamar' => 'ROSE02',
+            'gambar' => 'roomhotel2.jpg',
+            'deskripsi' => 'dengan ruangan yang mewah dan pelayanan yang terbaik',
+            'kapasitas' => '2',
+            'tgl_tersedia' => '2022-03-18',
+            'harga' => '350000',
+            'status' => '1',
+            'id_room_tipe' => '2',
+        ]);
+        DB::table('facility_hotels')->insert([
+            'nama_barang' => 'Swimming Pool',
+            'gambar' => 'kolam.jpg',
+        ]);
+        DB::table('facility_hotels')->insert([
+            'nama_barang' => 'Gym Fitness',
+            'gambar' => 'gym.jpg',
         ]);
     }
 }

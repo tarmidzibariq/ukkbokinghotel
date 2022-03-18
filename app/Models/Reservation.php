@@ -16,7 +16,7 @@ class Reservation extends Model
         'tgl_keluar',
         'dewasa',
         'anak',
-        'bukti_cek',
+        // 'bukti_cek',
         'id_room',
 
     ];
