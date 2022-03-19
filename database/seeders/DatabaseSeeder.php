@@ -27,31 +27,37 @@ class DatabaseSeeder extends Seeder
             'role' => 'Resepsionis',
         ]);
         DB::table('room_tipes')->insert([
-            'nama'=>'Superior'
+            'nama'=>'Superior',
+            'harga'=>'500000',
+            'deskripsi'=> 'Wi-Fi gratis, Parkir mandiri gratis, Sarapan untuk 2 orang',
+            'kapasitas'=> '2 Tamu',
         ]);
         DB::table('room_tipes')->insert([
-            'nama'=>'Deluxe'
-        ]);
-        DB::table('rooms')->insert([
-            'kode_kamar' => 'ROSE01',
-            'gambar' => 'roomhotel1.jpg',
-            'deskripsi' => 'dengan ruangan yang mewah dan pelayanan yang terbaik',
-            'kapasitas' => '2',
-            'tgl_tersedia' => '2022-03-16',
-            'harga' => '500000',
-            'status' => '1',
-            'id_room_tipe' => '1',
-        ]);
-        DB::table('rooms')->insert([
-            'kode_kamar' => 'ROSE02',
-            'gambar' => 'roomhotel2.jpg',
-            'deskripsi' => 'dengan ruangan yang mewah dan pelayanan yang terbaik',
-            'kapasitas' => '2',
-            'tgl_tersedia' => '2022-03-18',
+            'nama' => 'Deluxe',
             'harga' => '350000',
-            'status' => '1',
-            'id_room_tipe' => '2',
+            'deskripsi' => 'Wi-Fi gratis',
+            'kapasitas' => '1 Tamu',
         ]);
+        // DB::table('rooms')->insert([
+        //     'kode_kamar' => 'ROSE01',
+        //     'gambar' => 'roomhotel1.jpg',
+        //     'deskripsi' => 'dengan ruangan yang mewah dan pelayanan yang terbaik',
+        //     'kapasitas' => '2',
+        //     'tgl_tersedia' => '2022-03-16',
+        //     'harga' => '500000',
+        //     'status' => '1',
+        //     'id_room_tipe' => '1',
+        // ]);
+        // DB::table('rooms')->insert([
+        //     'kode_kamar' => 'ROSE02',
+        //     'gambar' => 'roomhotel2.jpg',
+        //     'deskripsi' => 'dengan ruangan yang mewah dan pelayanan yang terbaik',
+        //     'kapasitas' => '2',
+        //     'tgl_tersedia' => '2022-03-18',
+        //     'harga' => '350000',
+        //     'status' => '1',
+        //     'id_room_tipe' => '2',
+        // ]);
         DB::table('facility_hotels')->insert([
             'nama_barang' => 'Swimming Pool',
             'gambar' => 'kolam.jpg',

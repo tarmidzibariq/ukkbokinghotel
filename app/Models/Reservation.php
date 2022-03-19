@@ -12,12 +12,12 @@ class Reservation extends Model
         'nama',
         'email',
         'no_telp',
+        'nama_tamu',
         'tgl_masuk',
         'tgl_keluar',
-        'dewasa',
-        'anak',
-        // 'bukti_cek',
+        'jumlah_kamar',
         'id_room',
+        'id_room_tipe',
 
     ];
     protected $table = 'reservations';

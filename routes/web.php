@@ -25,7 +25,7 @@ Route::get('/admin', function () {
 });
 // default home
 Route::get('/', [DashboardDefaultController::class, 'index'])->name('index');
-Route::get('/store', [DashboardDefaultController::class, 'store'])->name('store');
+Route::post('/store', [DashboardDefaultController::class, 'store'])->name('store');
 
 
 
@@ -50,6 +50,8 @@ Route::group(['prefix' =>'room-tipe','as'=>'room-tipe.','middleware'=>'checkRole
     Route::get('/', [RoomTipeController::class, 'index'])->name('index');
     Route::get('/create', [RoomTipeController::class, 'create'])->name('create');
     Route::post('/store', [RoomTipeController::class, 'store'])->name('store');
+    Route::get('/edit/{id}', [RoomTipeController::class, 'edit'])->name('edit');
+    Route::post('/update/{id}', [RoomTipeController::class, 'update'])->name('update');
     Route::post('/destroy/{id}', [RoomTipeController::class, 'destroy'])->name('destroy');
 });
 

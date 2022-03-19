@@ -30,11 +30,11 @@
                         </select>
                     </div>
                 </div>
-                <div class="col-lg-4 mt-2">
+                {{-- <div class="col-lg-4 mt-2">
                     <label for="" class="form-label">Open Date</label>
                     <input type="date" class="form-control" name="tgl_tersedia" required>
-                </div>
-                <div class="col-lg-4 mt-2">
+                </div> --}}
+                {{-- <div class="col-lg-4 mt-2">
                     <label for="" class="form-label">Rate</label>
                     <input type="number" class="form-control" name="kapasitas" placeholder="1 person" required>
                 </div>
@@ -45,7 +45,7 @@
                 <div class="col-12 mt-2">
                     <label for="" class="form-label">Description</label>
                     <textarea name="deskripsi" class="form-control" id="" cols="" rows="3" required></textarea>
-                </div>
+                </div> --}}
                 <div class="col-12 mt-2">
                     <label for="" class="form-label">Image</label>
                     <input type="file" name="gambar" class="form-control d-none" id="file">

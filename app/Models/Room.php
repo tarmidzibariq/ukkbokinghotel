@@ -11,20 +11,20 @@ class Room extends Model
     protected $fillable = [
         'kode_kamar',
         'gambar',
-        'deskripsi',
-        'kapasitas',
-        'tgl_tersedia',
-        'harga',
+        // 'deskripsi',
+        // 'kapasitas',
+        // 'tgl_tersedia',
+        // 'harga',
         'status',
         'id_room_tipe',
 
     ];
     protected $table = 'rooms';
 
-    public function FacilityRoom()
-    {
-        return $this->hasMany('App\Models\FacilityRoom');
-    }  
+    // public function FacilityRoom()
+    // {
+    //     return $this->hasMany('App\Models\FacilityRoom');
+    // }  
     public function Reservation()
     {
         return $this->hasMany('App\Models\Reservation');

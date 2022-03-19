@@ -18,32 +18,24 @@
                     <tr>
                         <th>No</th>
                         <th>Kode Rooms</th>
-                        <th>Open Date</th>
-                        <th>Price</th>
-                        <th>Rate</th>
+                        <th>Tipe Room</th>
+                        <td>Image</td>
                         <th>Status</th>
                         <th>Action</th>
                     </tr>
                 </thead>
-                {{-- <tfoot>
-                    <tr>
-                        <th>No</th>
-                        <th>Kode Rooms</th>
-                        <th>Open Date</th>
-                        <th>Price</th>
-                        <th>Rate</th>
-                        <th>Status</th>
-                        <th>Action</th>
-                    </tr>
-                </tfoot> --}}
+                @php
+                    use App\Models\RoomTipe;
+                    use App\Models\Room;
+                    $a = RoomTipe::all();
+                @endphp
                 <tbody>
                     @foreach ($room as $item)
                     <tr>
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ $item->kode_kamar }}</td>
-                        <td>{{ Carbon\Carbon::parse($item->tgl_tersedia)->isoFormat("D MMMM Y") }}</td>
-                        <td>{{ 'Rp '.number_format($item->harga) }}</td>
-                        <td>{{ $item->kapasitas }}</td>
+                        <td class="text-capitalize">{{ $a->where('id',$item->id_room_tipe)->first()->nama }}</td>
+                        <td><img src="{{ asset('storage/rooms/'.$item->gambar) }}" alt="" width="100"></td>
                         <td> 
                             {{-- kalau non aktif --}}
                             @if ($item->status == '0')

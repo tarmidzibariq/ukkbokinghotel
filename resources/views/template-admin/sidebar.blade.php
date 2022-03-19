@@ -26,42 +26,44 @@
         Interface
     </div>
     @php
-        $bersatu = ['room.index','room.create','room.edit','room-tipe.index','room-tipe.create'];
         $roomtipe = ['room-tipe.index','room-tipe.create'];
         $rooms = ['room.index','room.create','room.edit'];
+        $farooms = ['facility-room.index','facility-room.create','facility-room.edit'];
+        $bersatu = ['room-tipe.index','room-tipe.create', 'room.index','room.create','room.edit', 'facility-room.index','facility-room.create','facility-room.edit'];
     @endphp
     <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item {{ Request::routeIs($bersatu) ? 'active' : ''}}">
         <a class="nav-link collapsed" href=""data-toggle="collapse" data-target="#collapseTwo"
             aria-expanded="true" aria-controls="collapseUtilities" >
-            <i class="fas fa-fw fa-cog"></i>
-            <span>Rooms</span>
+            <i class="fas fa-bed"></i>
+            <span>Rooms Tipe</span>
         </a>
         <div id="collapseTwo" class="collapse {{ Request::routeIs($bersatu) ? 'show' : ''}}" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Custom Components:</h6>
-                <a class="collapse-item {{ Request::routeIs($rooms) ? 'active' : ''}}" href="{{ route('room.index') }}">Rooms</a>
+                <h6 class="collapse-header">Custom Room Tipe:</h6>
                 <a class="collapse-item {{ Request::routeIs($roomtipe) ? 'active' : ''}}" href="{{ route('room-tipe.index') }}">Room Tipe</a>
+                <a class="collapse-item {{ Request::routeIs($farooms) ? 'active' : ''}}" href="{{ route('facility-room.index') }}">Facility Rooms Tipe</a>
+                <a class="collapse-item {{ Request::routeIs($rooms) ? 'active' : ''}}" href="{{ route('room.index') }}">Rooms</a>
             </div>
         </div>
     </li>
     @php
-        $satuin = ['facility-hotels.index','facility-hotels.create','facility-hotels.edit','facility-room.index','facility-room.create','facility-room.edit'];
-        $farooms = ['facility-room.index','facility-room.create','facility-room.edit'];
+        // $satuin = ['facility-hotels.index','facility-hotels.create','facility-hotels.edit','facility-room.index','facility-room.create','facility-room.edit'];
+        // $farooms = ['facility-room.index','facility-room.create','facility-room.edit'];
         $fahotels = ['facility-hotels.index','facility-hotels.create','facility-hotels.edit'];
     @endphp
     <!-- Nav Item - Utilities Collapse Menu -->
-    <li class="nav-item {{ Request::routeIs($satuin) ? 'active' : ''}}">
+    <li class="nav-item {{ Request::routeIs($fahotels) ? 'active' : ''}}">
         <a class="nav-link collapsed" href="" data-toggle="collapse" data-target="#collapseUtilities"
             aria-expanded="true" aria-controls="collapseUtilities">
-            <i class="fas fa-fw fa-wrench"></i>
-            <span>Facility</span>
+            <i class="fas fa-warehouse"></i>
+            <span>Hotels</span>
         </a>
-        <div id="collapseUtilities" class="collapse {{ Request::routeIs($satuin) ? 'show' : ''}}" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+        <div id="collapseUtilities" class="collapse {{ Request::routeIs($fahotels) ? 'show' : ''}}" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header ">Custom Facility:</h6>
+                <h6 class="collapse-header ">Custom Hotels:</h6>
                 <a class="collapse-item {{ Request::routeIs($fahotels) ? 'active' : ''}}" href="{{ route('facility-hotels.index') }}">Facility Hotels</a>
-                <a class="collapse-item {{ Request::routeIs($farooms) ? 'active' : ''}}" href="{{ route('facility-room.index') }}">Facility Rooms</a>
+                {{-- <a class="collapse-item {{ Request::routeIs($farooms) ? 'active' : ''}}" href="{{ route('facility-room.index') }}">Facility Rooms</a> --}}
             </div>
         </div>
     </li>

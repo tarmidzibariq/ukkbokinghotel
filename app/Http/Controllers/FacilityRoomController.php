@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Room;
+// use App\Models\Room;
 use App\Models\FacilityRoom;
+use App\Models\RoomTipe;
+
 class FacilityRoomController extends Controller
 {
     public function __construct()
@@ -29,9 +31,9 @@ class FacilityRoomController extends Controller
      */
     public function create()
     {
-        $room = Room::orderBy('created_at', 'DESC')->get();
-        // dd($room);
-        return view('admin.fasilitas-room.create',compact('room'));
+        $roomtipe = RoomTipe::orderBy('created_at', 'DESC')->get();
+        // dd($roomtipe);
+        return view('admin.fasilitas-room.create',compact('roomtipe'));
     }
 
     /**
@@ -44,11 +46,11 @@ class FacilityRoomController extends Controller
     {
         // dd($request);
         $request->validate([
-            'id_room' => 'required',
+            'id_room_tipe' => 'required',
             'nama_barang' => 'required',
         ]);
         FacilityRoom::create([
-            'id_room' => $request->id_room,
+            'id_room_tipe' => $request->id_room_tipe,
             'nama_barang' => $request->nama_barang,
         ]);
         return redirect('facility-room');
@@ -75,8 +77,8 @@ class FacilityRoomController extends Controller
     {
 
         $facilityroom = FacilityRoom::find($id);
-        $room = Room::orderBy('created_at', 'DESC')->get();
-        return view('admin.fasilitas-room.edit', compact('facilityroom','room'));
+        $roomtipe = RoomTipe::orderBy('created_at', 'DESC')->get();
+        return view('admin.fasilitas-room.edit', compact('facilityroom','roomtipe'));
     }
 
     /**
@@ -89,7 +91,7 @@ class FacilityRoomController extends Controller
     public function update(Request $request, $id)
     {
         $update = FacilityRoom::find($id)->update([
-            'id_room' => $request->id_room,
+            'id_room_tipe' => $request->id_room_tipe,
             'nama_barang' => $request->nama_barang,
         ]);
         return redirect('facility-room');

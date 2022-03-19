@@ -18,6 +18,9 @@
                     <tr>
                         <th>No</th>
                         <th>Room Tipe</th>
+                        <th>Price</th>
+                        <th>Rate</th>
+                        <th>Description</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -26,8 +29,14 @@
                         <tr>
                             <td>{{ $loop->iteration }}</td>
                             <td>{{ $item->nama }}</td>
+                            <td>{{ 'Rp '.number_format($item->harga) }}</td>
+                            <td>{{ $item->kapasitas }}</td>
+                            <td>{{ $item->deskripsi }}</td>
                             <td>
                                 <div class="row justify-content-center">
+                                    <div class="col-2  ">
+                                        <a href="{{ route('room-tipe.edit',$item->id) }}"><i class="fas fa-edit " style="color: #f39c12"></i></a>
+                                    </div>
                                     <div class="col-2  ">
                                         <a href="" class="m-0" data-toggle="modal" data-target="#hapus{{ $item->id }}"><i class="fas fa-trash text-danger" ></i></a> 
                                     </div>

@@ -17,13 +17,13 @@ class CreateRoomsTable extends Migration
             $table->id();
             $table->string('kode_kamar');
             $table->string('gambar');
-            $table->text('deskripsi');
-            $table->string('kapasitas');
-            $table->date('tgl_tersedia')->nullable();
-            // $table->date('tgl_tutup');
-            $table->integer('harga');
-            $table->string('status'); // 1 atau 2 dan 3
             $table->integer('id_room_tipe');
+            $table->string('status'); // 1 atau 2 dan 3
+            // $table->string('kapasitas');
+            // $table->text('deskripsi');
+            // $table->date('tgl_tersedia')->nullable();
+            // $table->date('tgl_tutup');
+            // $table->integer('harga');
             $table->timestamps();
         });
     }

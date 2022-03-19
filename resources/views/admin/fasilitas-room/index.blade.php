@@ -17,7 +17,7 @@
                 <thead>
                     <tr>
                         <th>No</th>
-                        <th>Kode Rooms</th>
+                        <th>Rooms Tipe</th>
                         <th>Equipment</th>
                         <th>Create Date</th>
                         <th>Action</th>
@@ -25,9 +25,9 @@
                 </thead>
                 <tbody>
                     @php
-                        use App\Models\Room;
+                        use App\Models\RoomTipe;
                         use App\Models\FacilityRoom;
-                        $a = Room::all();
+                        $a = RoomTipe::all();
                         // dd($a->where('id','3')->first()->name);
                         // $b = AppsRole::all();
                         // dd($b);
@@ -35,7 +35,7 @@
                     @foreach ($facilityroom as $item)
                         <tr>
                             <td>{{ $loop->iteration }}</td>
-                            <td>{{ $a->where('id',$item->id_room)->first()->kode_kamar }}</td>
+                            <td>{{ $a->where('id',$item->id_room_tipe)->first()->nama }}</td>
                             <td>{{ $item->nama_barang }}</td>
                             <td>{{ Carbon\Carbon::parse($item->created_at)->isoFormat("D MMMM Y") }}</td>
                             <td>

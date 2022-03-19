@@ -9,7 +9,7 @@ class FacilityRoom extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'id_room',
+        'id_room_tipe',
         'nama_barang',
 
     ];
@@ -17,6 +17,6 @@ class FacilityRoom extends Model
 
     public function rooms()
     {
-        return $this->belongsTo('App\Models\Room', 'id_room', 'id');
+        return $this->belongsTo('App\Models\RoomTipe', 'id_room_tipe', 'id');
     }
 }

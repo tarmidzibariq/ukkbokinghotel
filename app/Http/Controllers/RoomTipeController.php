@@ -41,9 +41,15 @@ class RoomTipeController extends Controller
     {
         $request->validate([
             'nama'=>'required',
+            'kapasitas'=>'required',
+            'harga'=>'required',
+            'deskripsi'=>'required',
         ]);
         RoomTipe::create([
             'nama'=>$request->nama,
+            'kapasitas'=>$request->kapasitas,
+            'harga'=>$request->harga,
+            'deskripsi'=>$request->deskripsi,
         ]);
         return redirect('room-tipe');
     }
@@ -67,7 +73,8 @@ class RoomTipeController extends Controller
      */
     public function edit($id)
     {
-        //
+        $roomtipe = RoomTipe::find($id);
+        return view('admin.room-tipe.edit', compact('roomtipe'));
     }
 
     /**
@@ -79,7 +86,13 @@ class RoomTipeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $update = RoomTipe::find($id)->update([
+            'nama' => $request->nama,
+            'kapasitas' => $request->kapasitas,
+            'harga' => $request->harga,
+            'deskripsi' => $request->deskripsi,
+        ]);
+        return redirect('room-tipe');
     }
 
     /**

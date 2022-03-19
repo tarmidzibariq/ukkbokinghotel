@@ -18,18 +18,18 @@
         <div class="card-body">
             <div class="row">
                 @php
-                    use App\Models\Room;
+                    use App\Models\RoomTipe;
                     use App\Models\FacilityRoom;
-                    $a = Room::all();
+                    $a = RoomTipe::all();
                 @endphp
                 <div class="col-12">
                     <label for="" class="form-label">Kode Rooms</label>
                     <div class="form-control p-1">
-                        <select name="id_room" id="select" class="form-control " required>
+                        <select name="id_room_tipe" id="select" class="form-control " required>
                             {{-- <option value="" selected>--Chose One--</option> --}}
-                            <option value="{{ $facilityroom->id_room }} " selected>{{ $a->where('id',$facilityroom->id_room)->first()->kode_kamar }}</option>
-                            @foreach ($room as $item)
-                                <option value="{{ $item->id }}">{{ $item->kode_kamar }}</option>
+                            <option value="{{ $facilityroom->id_room_tipe }} " selected>{{ $a->where('id',$facilityroom->id_room_tipe)->first()->nama }}</option>
+                            @foreach ($roomtipe as $item)
+                                <option value="{{ $item->id }}">{{ $item->nama }}</option>
                             @endforeach
                         </select>
                     </div>

@@ -10,11 +10,19 @@ class RoomTipe extends Model
     use HasFactory;
     protected $fillable = [
         'nama',
+        'harga',
+        'deskripsi',
+        'kapasitas',
+        'stock',
     ];
     protected $table = 'room_tipes';
 
     public function Room()
     {
         return $this->hasMany('App\Models\Room');
+    }
+    public function FacilityRoom()
+    {
+        return $this->hasMany('App\Models\FacilityRoom');
     }  
 }
