@@ -41,6 +41,7 @@
                             @if ($item->status == '0')
                                 <form action="{{ route('room.nonactive',$item->id) }}}" method="post" style="display: inline">
                                     @csrf
+                                    <input type="hidden" name="id_room_tipe" value="{{ $item->id_room_tipe }}">
                                     <button class="btn btn-danger btn-icon-split btn-sm" type="submit">
                                         <span class="icon text-white-50">
                                            <i class="fas fa-times-circle"></i>
@@ -50,6 +51,7 @@
                                 </form>
                                 <form action="{{ route('room.active',$item->id) }}}" method="post" style="display: inline">
                                     @csrf
+                                    <input type="hidden" name="id_room_tipe" value="{{ $item->id_room_tipe }}">
                                     <button class="btn btn-secondary btn-icon-split btn-sm mt-2 mt-md-0" type="submit">
                                         <span class="icon text-white-50">
                                             <i class="fas fa-check"></i>
@@ -62,6 +64,7 @@
                             @if ($item->status == '1')
                                 <form action="{{ route('room.nonactive',$item->id) }}}" method="post" style="display: inline">
                                     @csrf
+                                    <input type="hidden" name="id_room_tipe" value="{{ $item->id_room_tipe }}">
                                     <button class="btn btn-secondary btn-icon-split btn-sm" type="submit">
                                         <span class="icon text-white-50">
                                            <i class="fas fa-times-circle"></i>
@@ -71,6 +74,7 @@
                                 </form>
                                 <form action="{{ route('room.active',$item->id) }}}" method="post" style="display: inline">
                                     @csrf
+                                    <input type="hidden" name="id_room_tipe" value="{{ $item->id_room_tipe }}">
                                     <button class="btn btn-success btn-icon-split btn-sm mt-2 mt-md-0" type="submit">
                                         <span class="icon text-white-50">
                                             <i class="fas fa-check"></i>

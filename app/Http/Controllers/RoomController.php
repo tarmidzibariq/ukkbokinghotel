@@ -54,10 +54,6 @@ class RoomController extends Controller
         // dd($request);
         $request->validate([
             'kode_kamar' => 'required|unique:rooms',
-            // 'tgl_tersedia' => 'required',
-            // 'kapasitas' => 'required',
-            // 'harga' => 'required',
-            // 'deskripsi' => 'required',
             'id_room_tipe' => 'required',
             'gambar' => 'required|image|mimes:jpeg,jpg,png',
         ]);
@@ -65,10 +61,6 @@ class RoomController extends Controller
         $gambar->storeAs('public/rooms', $gambar->hashName());
         Room::create([
             'kode_kamar' => $request->kode_kamar,
-            // 'tgl_tersedia' => $request->tgl_tersedia,
-            // 'kapasitas' => $request->kapasitas,
-            // 'harga' => $request->harga,
-            // 'deskripsi' => $request->deskripsi,
             'id_room_tipe' => $request->id_room_tipe,
             'gambar' => $gambar->hashName(),
             'status' => 0,
@@ -121,20 +113,11 @@ class RoomController extends Controller
             $gambar = $request->file('gambar');
             $gambar->storeAs('public/rooms', $gambar->hashName());
             $update = Room::find($id)->update([
-                // 'kode_kamar' => $request->kode_kamar,
-                // 'tgl_tersedia' => $request->tgl_tersedia,
-                // 'kapasitas' => $request->kapasitas,
-                // 'harga' => $request->harga,
-                // 'deskripsi' => $request->deskripsi,
                 'id_room_tipe' => $request->id_room_tipe,
                 'gambar' => $gambar->hashName(),
             ]);
         }else{
             $update = Room::find($id)->update([
-                // 'tgl_tersedia' => $request->tgl_tersedia,
-                // 'kapasitas' => $request->kapasitas,
-                // 'harga' => $request->harga,
-                // 'deskripsi' => $request->deskripsi,
                 'id_room_tipe' => $request->id_room_tipe,
             ]);
         }
@@ -160,16 +143,47 @@ class RoomController extends Controller
     public function nonactive(Request $request, $id)
     {
         // dd($id);
+        $id_room_tipe = $request->id_room_tipe;
+
+        // cari id di table room_tipe
+        $roomtipe = RoomTipe::find($id_room_tipe);
+
+        // get table room_tipe yg ada stock nya
+        $stock = $roomtipe->stock;
+        // dd($stock+1);
         $update = Room::find($id)->update([
             'status' => 0,
+        ]);
+
+        $update = RoomTipe::find($id_room_tipe)->update([
+            'stock' => $stock - 1,
         ]);
         return redirect('room');
     }
     public function active(Request $request, $id)
     {
+        // dd($id_room_tipe);
+        
+        // $roomtipeupdate = $roomtipe->where('id',$id)->nama;
+        // dd($roomtipeupdate);
+        
+        $id_room_tipe = $request->id_room_tipe;
+        
+        // cari id di table room_tipe
+        $roomtipe = RoomTipe::find($id_room_tipe);
+
+        // get table room_tipe yg ada stock nya
+        $stock = $roomtipe->stock;
+        // dd($stock+1);
+        
         $update = Room::find($id)->update([
             'status' => 1,
         ]);
+
+        $update = RoomTipe::find($id_room_tipe)->update([
+            'stock' => $stock + 1,
+        ]);
+        // $up = RoomTipe::
         return redirect('room');
     }
 }

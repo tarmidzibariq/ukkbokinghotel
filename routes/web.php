@@ -17,9 +17,9 @@ use App\Http\Controllers\DashboardDefaultController;
 |
 */
 
-// Route::get('/', function () {
-//     return view('defaulthome');
-// });
+Route::get('/form', function () {
+    return view('form-input');
+});
 Route::get('/admin', function () {
     return view('master');
 });
@@ -45,7 +45,7 @@ Route::group(['prefix' =>'room','as'=>'room.','middleware'=>'checkRole:admin'],f
     Route::post('/destroy/{id}', [RoomController::class, 'destroy'])->name('destroy');
 });
 
-// rooms admin
+// rooms tipe admin
 Route::group(['prefix' =>'room-tipe','as'=>'room-tipe.','middleware'=>'checkRole:admin'],function(){
     Route::get('/', [RoomTipeController::class, 'index'])->name('index');
     Route::get('/create', [RoomTipeController::class, 'create'])->name('create');

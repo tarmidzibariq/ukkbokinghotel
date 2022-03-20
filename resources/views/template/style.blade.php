@@ -72,7 +72,7 @@ nav .navbar-brand{
     font-family: 'Lobster',
     cursive;
     font-size: 40px;
-    color: #c9a9a4 !important;
+    color: #fb387e !important;
 }
 nav .navbar-nav .nav-link{
     border-bottom: 1px solid rgb(156, 156, 156);
@@ -95,17 +95,34 @@ nav .button:hover {
     }
 }
 /* check */
-#check{
-    padding: 50px;
+@media (min-width: 992px) { 
+    #check{
+        padding: 50px;
+    }
+    #check .button{
+        border: none;
+        background-color: #051334;
+        padding: 9px;
+        font-weight: 500;
+        transition: 0.5s;
+    }
+    #check label{
+    font-weight: 400;
+        font-size: 16px !important;
+        color: #8a8b8d;
+    }   
 }
+
+
 #check label{
-    font-weight: 500;
-    color: #051334;
+    font-weight: 400;
+    font-size: 12px;
+    color: #8a8b8d;
 }   
 #check .button{
     border: none;
     background-color: #051334;
-    padding: 9px;
+    padding: 5px;
     font-weight: 500;
     transition: 0.5s;
 }
@@ -114,17 +131,17 @@ nav .button:hover {
 }
 #check input[type=number] {
 
-    color: #c9a9a4;
+    color: #fb387e;
     transition: 0.5s;
 }
 
 #check input[type="number"]:before {
-    color: #c9a9a4;
+    color: #fb387e;
     content: attr(placeholder) !important;
 }
 
 #check input[type="number"]:focus {
-    color: #c9a9a4;
+    color: #fb387e;
     box-shadow: none;
     border-color: #CB968E !important;
 }
@@ -133,18 +150,18 @@ nav .button:hover {
 }
 
 #check input[type=date] {
-    color: #c9a9a4;
+    color: #fb387e;
     transition: 0.5s;
 }
 
 #check input[type="date"]:before {
-    color: #c9a9a4;
+    color: #fb387e;
     content: attr(placeholder) !important;
     margin-right: 0.5em;
 }
 
 #check input[type="date"]:focus {
-    color: #c9a9a4;
+    color: #fb387e;
     box-shadow: none;
     border-color: #CB968E !important;
 }
@@ -216,7 +233,7 @@ nav .button:hover {
     background-image: url('{{ asset('image/head-4.1.jpg') }}');
     background-size: cover;
     background-attachment: fixed;
-    color: #c9a9a4;
+    color: #fb387e;
 }
 #reservasi h1{
     font-family: 'Noto Serif',
@@ -292,7 +309,7 @@ nav .button:hover {
 }
 /* footer */
 footer{
-    background-color: #c9a9a4;
+    background-color: #fb387e;
     /* padding: 10px 0; */
 }
 
@@ -382,5 +399,142 @@ header .content .card .choice button:hover {
         width: 65%;
     }
 }
+.btn-circle{
+    border-radius:100%;
+    height:2.5rem;
+    width:2.5rem;
+    font-size:1rem;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center
+}
+
+
+/* forminput */
+@media (min-width: 992px) { 
+    #forminput{
+        padding-top: 50px;
+    }
+    #forminput .button{
+        border: none;
+        background-color: #051334;
+        padding: 9px;
+        font-weight: 500;
+        transition: 0.5s;
+    }
+    #forminput label{
+    font-weight: 400;
+        font-size: 16px !important;
+        color: #8a8b8d;
+    }   
+}
+
+
+#forminput label{
+    font-weight: 400;
+    font-size: 12px;
+    color: #8a8b8d;
+}   
+#forminput .button{
+    border: none;
+    background-color: #051334;
+    padding: 5px;
+    font-weight: 500;
+    transition: 0.5s;
+}
+#forminput .button:hover{
+    background-color: #0b2a74;
+}
+#forminput input[type=number] {
+
+    color: #fb387e;
+    transition: 0.5s;
+}
+
+#forminput input[type="number"]:before {
+    color: #fb387e;
+    content: attr(placeholder) !important;
+}
+
+#forminput input[type="number"]:focus {
+    color: #fb387e;
+    box-shadow: none;
+    border-color: #CB968E !important;
+}
+#forminput input[type="number"]:hover {
+    border-color: #CB968E !important;
+}
+
+#forminput input[type=date] {
+    color: #fb387e;
+    transition: 0.5s;
+}
+
+#forminput input[type="date"]:before {
+    color: #fb387e;
+    content: attr(placeholder) !important;
+    margin-right: 0.5em;
+}
+
+#forminput input[type="date"]:focus {
+    color: #fb387e;
+    box-shadow: none;
+    border-color: #CB968E !important;
+}
+#forminput input[type="date"]:hover {
+    border-color: #CB968E !important;
+}
+
+/* hotels */
+#hotels .list-room{
+    height: auto;
+    /* background-color: black; */
+}
+#hotels .list-room img{
+    width: 100%;
+}
+#hotels .list-room p{
+    font-size: 12px;
+}
+#hotels .list-room h4{
+    font-size: 16px;
+}
+
+#hotels .inputgrup .quantity-field{
+    width: 60px;
+}
+@media (min-width: 768px) { 
+    #hotels .inputgrup .quantity-field{
+        width: 60px;
+    }
+}
+@media (min-width: 992px) { 
+    #hotels .inputgrup .quantity-field{
+        width: 65px;    
+    }
+    #hotels .inputgrup .button-minus{
+        height:2.5rem;
+        width:2.5rem;
+    }
+    #hotels .inputgrup .button-plus{
+        height:2.5rem;
+        width:2.5rem;
+    }
+    #hotels .list-room p{
+        font-size: 14px;
+    }
+    #hotels .list-room h4{
+        font-size: 20px;
+    }
+ }
+ @media (min-width: 1200px) {
+    #hotels .inputgrup .quantity-field{
+        width: 80px;
+    }
+    #hotels .list-room h4{
+        font-size: 24px;
+    }
+  }
+
 
 </style>

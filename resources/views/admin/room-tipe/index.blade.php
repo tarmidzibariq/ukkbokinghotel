@@ -18,6 +18,7 @@
                     <tr>
                         <th>No</th>
                         <th>Room Tipe</th>
+                        <th>Room Ready</th>
                         <th>Price</th>
                         <th>Rate</th>
                         <th>Description</th>
@@ -29,6 +30,13 @@
                         <tr>
                             <td>{{ $loop->iteration }}</td>
                             <td>{{ $item->nama }}</td>
+                            <td>@php
+                                if (!empty($item->stock)) {
+                                echo $item->stock;
+                            }else {
+                                echo '0';
+                            }
+                            @endphp </td>
                             <td>{{ 'Rp '.number_format($item->harga) }}</td>
                             <td>{{ $item->kapasitas }}</td>
                             <td>{{ $item->deskripsi }}</td>

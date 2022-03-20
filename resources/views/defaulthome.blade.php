@@ -31,7 +31,7 @@
     <!-- <h1>Hello, world!</h1> -->
     <nav class="navbar navbar-expand-lg navbar-light fixed-top bg-white border-bottom border-1 p-0 mb-5">
         <div class="container">
-            <a class="navbar-brand " href="#">Rose</a>
+            <a class="navbar-brand " href="#">Rose Hotels</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -45,12 +45,12 @@
                     <li class="nav-item ms-2">
                         <a class="nav-link" href="#turun">ABOUT</a>
                     </li>
-                    <li class="nav-item ms-2">
+                    {{-- <li class="nav-item ms-2">
                         <a class="nav-link" href="#reservasi">RESERVATION</a>
-                    </li>
-                    <li class="nav-item ms-2">
+                    </li> --}}
+                    {{-- <li class="nav-item ms-2">
                         <a class="nav-link" href="#product">ROOMS HOTELS</a>
-                    </li>
+                    </li> --}}
                     {{-- <li class="nav-item ms-2">
                         <a class="nav-link button text-white px-3" href="{{ route('login') }}">LOGIN</a>
                     </li> --}}
@@ -81,23 +81,32 @@
         <div class="container">
             <div class="row">
                 <div class="d-flex justify-content-center">
-                    <div class="col-md-9">
+                    <div class="col-md-10 col-12 my-4 my-lg-0">
+                        {{-- <div class="d-flex align-items-center">
+                            <div class="p-2 btn btn-circle" style="background-color: #fb387e;">
+                                <i class="fas fa-bed text-white"></i>
+                            </div>
+                            <div class="ms-3 fs-5">
+                                Booking Hotel Murah Online dengan Harga Promo
+                            </div>
+                        </div> --}}
+                        
                         <form action="">
                             <div class="row">
-                                <div class="col-lg-3 ">
-                                    <label for="">Tanggal Check In</label>
+                                <div class="col-lg-3 col-3">
+                                    <label for="">Check-in</label>
                                     <input type="date" class=" form-control rounded-0 border-1 border-white p-2 mt-1"
                                         value="{{ date('Y-m-d') }}" name="tgl_mulai" >
                                 </div>
-                                <div class="col-lg-3 mt-2 mt-md-0">
-                                    <label for="">Tanggal Check Out</label>
+                                <div class="col-lg-3 col-3">
+                                    <label for="">Check-out</label>
                                     <input type="date" class="form-control rounded-0 border-1 border-white p-2 mt-1" value="{{ date('Y-m-d', strtotime('+1 days')) }}">
                                 </div>
-                                <div class="col-lg-2 col-5 mt-2 mt-md-0">
-                                    <label for="">Jumlah Kamar</label>
+                                <div class="col-lg-2 col-3">
+                                    <label for="">Kamar</label>
                                     <input type="number" class="form-control rounded-0 border-1 border-white p-2 mt-1" name="jumlah_kamar">
                                 </div>
-                                <div class="col-md-4 col-7 mt-2 mt-md-0">
+                                <div class="col-lg-4 col-3 mt-1">
                                     <button class="button text-center w-100 text-white mt-4">
                                         CHECK
                                     </button>
