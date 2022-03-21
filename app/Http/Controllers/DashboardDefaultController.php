@@ -19,30 +19,42 @@ class DashboardDefaultController extends Controller
         // dd($facilityroom);
         return view('defaulthome',compact('room', 'facilityroom', 'roomtipe', 'facilityhotel'));
     }
-
+    public function forminput()
+    {
+        
+        return view('form-input');
+    }
+    
     public function store(Request $request)
     {
-        // dd($request);
-        $request->validate([
-            'nama'=>'required',
-            'email'=>'required',
-            'no_telp'=>'required',
-            'nama_tamu'=>'required',
-            'tgl_masuk'=>'required',
-            'tgl_keluar'=>'required',
-            'id_room_tipe'=>'required',
-            'jumlah_kamar'=>'required',
-        ]);
-        Reservation::create([
-            'nama'=>$request->nama,
-            'email'=>$request->email,
-            'no_telp'=>$request->no_telp,
-            'nama_tamu'=>$request->nama_tamu,
-            'tgl_masuk'=>$request->tgl_masuk,
-            'tgl_keluar'=>$request->tgl_keluar,
-            'tgl_room_tipe'=>$request->tgl_room_tipe,
-            'jumlah_kamar'=>$request->jumlah_kamar,
-        ]);
-        return redirect()->route('index');
+        $tgl_mulai = $request->tgl_mulai;
+        $tgl_keluar = $request->tgl_keluar;
+        $tamu = $request->tamu;
+
+        // $
+        // dd($tgl_mulai);
+        // $stock = RoomTipe::orderBy('created_at','DESC')->get();
+
+        // $stock = 0;
+        // if ($stock == 0) {
+        //     $roomtipe = RoomTipe::where('stock',$stock)->get();
+        // }else{
+        //     $roomtipe = RoomTipe::all();
+        // }
+        // foreach ($stock as $key ) {
+
+        //     // print_r($key->stock);
+        //     if ($key->stock > 0) {
+        //         echo RoomTipe::where('stock', $key->stock)->get();
+        //         // echo $key->nama;
+        //     } 
+            
+        // }
+        $roomtipe= RoomTipe::orderBy('id', 'DESC')->get();
+        $facilityroom = FacilityRoom::all();
+        // dd($stock);
+
+        // dd($roomtipe); 
+        return view('form-input', compact('tgl_mulai','tgl_keluar','tamu','roomtipe', 'facilityroom'));
     }
 }

@@ -23,8 +23,10 @@ class RoomController extends Controller
     public function index()
     {
         $room = Room::orderBy('created_at', 'DESC')->get();
+        $roomkode = Room::all()->count() + 1;
+        $roomtipe = RoomTipe::orderBy('created_at', 'DESC')->get();
         // dd($room);
-        return view('admin.room.index', compact('room'));
+        return view('admin.room.index', compact('room','roomkode','roomtipe'));
     }
 
     /**
@@ -55,14 +57,14 @@ class RoomController extends Controller
         $request->validate([
             'kode_kamar' => 'required|unique:rooms',
             'id_room_tipe' => 'required',
-            'gambar' => 'required|image|mimes:jpeg,jpg,png',
+            // 'gambar' => 'required|image|mimes:jpeg,jpg,png',
         ]);
-        $gambar = $request->file('gambar');
-        $gambar->storeAs('public/rooms', $gambar->hashName());
+        // $gambar = $request->file('gambar');
+        // $gambar->storeAs('public/rooms', $gambar->hashName());
         Room::create([
             'kode_kamar' => $request->kode_kamar,
             'id_room_tipe' => $request->id_room_tipe,
-            'gambar' => $gambar->hashName(),
+            // 'gambar' => $gambar->hashName(),
             'status' => 0,
         ]);
         return redirect('room');
@@ -101,26 +103,11 @@ class RoomController extends Controller
      */
     public function update(Request $request, $id )
     {
-        $room = Room::find($id);
+        // $room = Room::find($id);
         // dd($room->gambar);
-        if ($request->file('gambar')) {
-
-            $request->validate([
-                'gambar' => 'image|mimes:jpeg,jpg,png',
-            ]);
-
-            Storage::disk('local')->delete('public/rooms/'.basename($room->gambar));
-            $gambar = $request->file('gambar');
-            $gambar->storeAs('public/rooms', $gambar->hashName());
-            $update = Room::find($id)->update([
-                'id_room_tipe' => $request->id_room_tipe,
-                'gambar' => $gambar->hashName(),
-            ]);
-        }else{
             $update = Room::find($id)->update([
                 'id_room_tipe' => $request->id_room_tipe,
             ]);
-        }
         return redirect('room');
     }
 

@@ -10,7 +10,7 @@ class Room extends Model
     use HasFactory;
     protected $fillable = [
         'kode_kamar',
-        'gambar',
+        // 'gambar',
         // 'deskripsi',
         // 'kapasitas',
         // 'tgl_tersedia',

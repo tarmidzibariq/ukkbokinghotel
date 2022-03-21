@@ -25,7 +25,7 @@
     @include('template.library')
     <style>
         .transit{
-            transition: 1s;
+            transition: 1s;  
         }
     </style>
 </head>
@@ -66,19 +66,19 @@
                                             <label for="">Check-in</label>
                                             <input type="date"
                                                 class=" form-control rounded-0 border-1 border-white p-2 mt-1 bg-light"
-                                                value="{{ date('Y-m-d') }}" name="tgl_mulai">
+                                                value="{{ $tgl_mulai }}" name="tgl_mulai" >
                                         </div>
                                         <div class="col-lg-3 col-4">
                                             <label for="">Check-out</label>
                                             <input type="date"
                                                 class="form-control rounded-0 border-1 border-white p-2 mt-1 bg-light"
-                                                value="{{ date('Y-m-d', strtotime('+1 days')) }}">
+                                                value="{{ $tgl_keluar }}">
                                         </div>
                                         <div class="col-lg-2 col-4">
-                                            <label for="">Kamar</label>
+                                            <label for="">Tamu</label>
                                             <input type="number"
                                                 class="form-control rounded-0 border-1 border-white p-2 mt-1 bg-light"
-                                                name="jumlah_kamar">
+                                                name="tamu"value="{{ $tamu}}">
                                         </div>
                                         <div class="col-lg-4 col-12 mt-1">
                                             <button class="button text-center w-100 text-white mt-4">
@@ -101,7 +101,65 @@
                 <div class="row">
                     <div class="d-flex justify-content-center">
                         <div class="col-md-10 col-12 rounded">
-                            <div class="row py-3 px-3 bg-white shadow list-room mt-3 rounded">
+                            
+                            @foreach ($roomtipe as $item)
+                                @if ($item->stock > 0)
+                                    <div class="row py-3 px-3 bg-white shadow list-room mt-3 rounded">
+                                    <div class="col-5 col-lg-4">
+                                        <img src="{{ asset('storage/rooms/'.$item->gambar) }}" alt="" class=" rounded">
+                                    </div>
+                                    <div class="col-7-lg-8 col">
+                                        <div class="title">
+                                            <div class="d-flex justify-content-between border-bottom align-items-center">
+                                                <div>
+                                                    <h4 class="mb-1">{{ $item->nama }}</h4>
+                                                    <p class="text-danger mb-1 fw-bold" style="font-size: 12px">{{'*Tersedia '.$item->stock  }}</p>
+                                                </div>
+                                                <p class="mb-3 text-danger text-end">{{ $item->deskripsi }}</p>
+                                            </div>
+                                            <div class="row mt-3">
+                                                @php
+                                                    $a = $facilityroom->where('id_room_tipe',$item->id);
+                                                    // dd($a);
+                                                @endphp
+                                                @foreach ($a as $key)
+                                                <div class="col-6">
+                                                    <p class="text-capitalize"> - {{ $key->nama_barang }}</p>
+                                                </div>
+                                                    
+                                                @endforeach
+                                                {{-- <div class="col-6">
+                                                    <p>- Wifi</p>
+                                                </div> --}}
+                                            </div>
+                                            <div class="row mt-4">
+                                                <form action="" method="post">
+                                                    <div class="d-flex justify-content-lg-end">
+                                                        <div class="col-6 col-lg-3 me-3">
+                                                            <div class="d-flex justify-content-between inputgrup">
+                                                                <input type="button" value="-" class="button-minus btn btn-danger"
+                                                                    data-field="quantity">
+                                                                <input type="number" step="1" min="0" max="{{ $item->stock }}" value="0" name="quantity"
+                                                                    class="quantity-field">
+                                                                <input type="button" value="+" class="button-plus btn btn-success"
+                                                                    data-field="quantity">
+                                                            </div>
+
+                                                        </div>
+                                                        <div class="col-6 col-lg-3">
+                                                            <button class="btn btn-primary text-center w-100 text-white "
+                                                                type="submit">{{ 'Rp '.number_format($item->harga) }}</button>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                @endif
+                                
+                            @endforeach
+                            {{-- <div class="row py-3 px-3 bg-white shadow list-room mt-3 rounded">
                                 <div class="col-5 col-lg-4">
                                     <img src="{{ asset('image/head-1.jpg') }}" alt="" class=" rounded">
                                 </div>
@@ -180,47 +238,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="row py-3 px-3 bg-white shadow list-room mt-3 rounded">
-                                <div class="col-5 col-lg-4">
-                                    <img src="{{ asset('image/head-1.jpg') }}" alt="" class=" rounded">
-                                </div>
-                                <div class="col-7-lg-8 col">
-                                    <div class="title">
-                                        <div class="d-flex justify-content-between border-bottom align-items-center">
-                                            <h4 class="mb-3">Kamar Standard Double</h4>
-                                            <p class="mb-3 text-danger text-end">Sisa 1 kamar lagi!a sdasdasdasdd</p>
-                                        </div>
-                                        <div class="row mt-3">
-                                            <div class="col-6">
-                                                <p> - 2 semi double beds</p>
-                                            </div>
-                                            <div class="col-6">
-                                                <p>- Wifi</p>
-                                            </div>
-                                        </div>
-                                        <div class="row mt-4">
-                                            <div class="d-flex justify-content-lg-end">
-                                                <div class="col-6 col-lg-3 me-3">
-                                                    <div class="d-flex justify-content-between inputgrup">
-                                                        <input type="button" value="-" class="button-minus btn btn-danger"
-                                                            data-field="quantity">
-                                                        <input type="number" step="1" max="" value="1" name="quantity"
-                                                            class="quantity-field">
-                                                        <input type="button" value="+" class="button-plus btn btn-success"
-                                                            data-field="quantity">
-                                                    </div>
-
-                                                </div>
-                                                <div class="col-6 col-lg-3">
-                                                    <button class="btn btn-primary text-center w-100 text-white "
-                                                        type="submit">Pilih</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                 </div>

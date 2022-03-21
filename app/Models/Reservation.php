@@ -16,6 +16,7 @@ class Reservation extends Model
         'tgl_masuk',
         'tgl_keluar',
         'jumlah_kamar',
+        'total',
         'id_room',
         'id_room_tipe',
 

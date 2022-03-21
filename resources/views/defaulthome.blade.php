@@ -91,20 +91,21 @@
                             </div>
                         </div> --}}
                         
-                        <form action="">
+                        <form action="{{ route('store') }}" method="post">
+                            @csrf
                             <div class="row">
                                 <div class="col-lg-3 col-3">
                                     <label for="">Check-in</label>
                                     <input type="date" class=" form-control rounded-0 border-1 border-white p-2 mt-1"
-                                        value="{{ date('Y-m-d') }}" name="tgl_mulai" >
+                                        value="{{ date('Y-m-d') }}" name="tgl_mulai" required>
                                 </div>
                                 <div class="col-lg-3 col-3">
                                     <label for="">Check-out</label>
-                                    <input type="date" class="form-control rounded-0 border-1 border-white p-2 mt-1" value="{{ date('Y-m-d', strtotime('+1 days')) }}">
+                                    <input type="date" class="form-control rounded-0 border-1 border-white p-2 mt-1" value="{{ date('Y-m-d', strtotime('+1 days')) }}" name="tgl_keluar" required>
                                 </div>
                                 <div class="col-lg-2 col-3">
-                                    <label for="">Kamar</label>
-                                    <input type="number" class="form-control rounded-0 border-1 border-white p-2 mt-1" name="jumlah_kamar">
+                                    <label for="">Tamu</label>
+                                    <input type="number" class="form-control rounded-0 border-1 border-white p-2 mt-1" name="tamu" placeholder="1 person" required>
                                 </div>
                                 <div class="col-lg-4 col-3 mt-1">
                                     <button class="button text-center w-100 text-white mt-4">

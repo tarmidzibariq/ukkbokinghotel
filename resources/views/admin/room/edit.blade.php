@@ -116,36 +116,6 @@
                         </select>
                     </div>
                 </div>
-                <div class="col-lg-4 mt-2">
-                    <label for="" class="form-label">Open Date</label>
-                    <input type="date" class="form-control" name="tgl_tersedia" value="{{ $room->tgl_tersedia }}" required>
-                </div>
-                <div class="col-lg-4 mt-2">
-                    <label for="" class="form-label">Rate</label>
-                    <input type="number" class="form-control" name="kapasitas" placeholder="rate person" value="{{ $room->kapasitas }}" required>
-                </div>
-                <div class="col-lg-4 mt-2">
-                    <label for="" class="form-label">Price</label>
-                    <input type="number" class="form-control" name="harga" placeholder="Rp. " value="{{ $room->harga }}" required>
-                </div>
-                <div class="col-12 mt-2">
-                    <label for="" class="form-label">Description</label>
-                    <textarea name="deskripsi" class="form-control" id="" cols="" rows="3" required>{{ $room->deskripsi }}</textarea>
-                </div>
-                <div class="col-12 mt-2">
-                    <label for="" class="form-label">Gambar</label>
-                    <input type="file" name="gambar" class="form-control d-none" value="{{ $room->gambar }}" id="file">
-                </div>
-            </div>
-            <div class="mt-3 d-flex justify-content-center">
-                <div class="card card-gambar">
-                    <div class="card-body p-0">
-                        <img src="{{ asset('storage/rooms/'.$room->gambar) }}" alt="" class="card-img-top" id="gambar">
-                        <div class="d-flex justify-content-center">
-                            <p class="btn btn-sm btn-primary shadow-sm px-3 my-2" id="pilih">Upload Image</p>
-                        </div>
-                    </div>
-                </div>
             </div>
             <div class="d-sm-flex align-items-center justify-content-end mt-3">
                 <button type="submit" class="btn btn-sm btn-primary shadow-sm px-3">Submit</button>

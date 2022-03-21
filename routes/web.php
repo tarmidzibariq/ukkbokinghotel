@@ -17,14 +17,15 @@ use App\Http\Controllers\DashboardDefaultController;
 |
 */
 
-Route::get('/form', function () {
-    return view('form-input');
-});
+// Route::get('/form', function () {
+//     return view('form-input');
+// });
 Route::get('/admin', function () {
     return view('master');
 });
 // default home
 Route::get('/', [DashboardDefaultController::class, 'index'])->name('index');
+Route::get('/forminput', [DashboardDefaultController::class, 'forminput'])->name('forminput');
 Route::post('/store', [DashboardDefaultController::class, 'store'])->name('store');
 
 

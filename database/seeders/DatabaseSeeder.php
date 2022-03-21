@@ -31,12 +31,14 @@ class DatabaseSeeder extends Seeder
             'harga'=>'500000',
             'deskripsi'=> 'Wi-Fi gratis, Parkir mandiri gratis, Sarapan untuk 2 orang',
             'kapasitas'=> '2 Tamu',
+            'gambar' => 'roomhotel1.jpg',
         ]);
         DB::table('room_tipes')->insert([
             'nama' => 'Deluxe',
             'harga' => '350000',
             'deskripsi' => 'Wi-Fi gratis',
             'kapasitas' => '1 Tamu',
+            'gambar' => 'roomhotel1.jpg',
         ]);
         // DB::table('rooms')->insert([
         //     'kode_kamar' => 'ROSE01',

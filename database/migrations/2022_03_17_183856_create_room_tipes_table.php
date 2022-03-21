@@ -19,6 +19,7 @@ class CreateRoomTipesTable extends Migration
             $table->integer('harga');
             $table->string('deskripsi');
             $table->string('kapasitas');
+            $table->string('gambar');
             $table->integer('stock')->nullable();
             $table->timestamps();
         });

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\RoomTipe;
+use Illuminate\Support\Facades\Storage;
 class RoomTipeController extends Controller
 {
     /**
@@ -44,12 +45,17 @@ class RoomTipeController extends Controller
             'kapasitas'=>'required',
             'harga'=>'required',
             'deskripsi'=>'required',
+            'gambar' => 'required|image|mimes:jpeg,jpg,png',
         ]);
+        $gambar = $request->file('gambar');
+        $gambar->storeAs('public/rooms', $gambar->hashName());
         RoomTipe::create([
             'nama'=>$request->nama,
             'kapasitas'=>$request->kapasitas,
             'harga'=>$request->harga,
             'deskripsi'=>$request->deskripsi,
+            'gambar' => $gambar->hashName(),
+            'stock' => 0,
         ]);
         return redirect('room-tipe');
     }
@@ -86,12 +92,30 @@ class RoomTipeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $update = RoomTipe::find($id)->update([
-            'nama' => $request->nama,
-            'kapasitas' => $request->kapasitas,
-            'harga' => $request->harga,
-            'deskripsi' => $request->deskripsi,
-        ]);
+        $roomtipe = RoomTipe::find($id);
+        if ($request->file('gambar')) {
+            $request->validate([
+                'gambar' => 'image|mimes:jpeg,jpg,png',
+            ]);
+            Storage::disk('local')->delete('public/rooms/' . basename($roomtipe->gambar));
+            $gambar = $request->file('gambar');
+            $gambar->storeAs('public/rooms', $gambar->hashName());
+            $update = RoomTipe::find($id)->update([
+                'nama' => $request->nama,
+                'kapasitas' => $request->kapasitas,
+                'harga' => $request->harga,
+                'deskripsi' => $request->deskripsi,
+                'gambar' => $gambar->hashName(),
+            ]);
+        }else{
+            $update = RoomTipe::find($id)->update([
+                'nama' => $request->nama,
+                'kapasitas' => $request->kapasitas,
+                'harga' => $request->harga,
+                'deskripsi' => $request->deskripsi,
+            ]);
+        }
+        
         return redirect('room-tipe');
     }
 
@@ -103,6 +127,9 @@ class RoomTipeController extends Controller
      */
     public function destroy($id)
     {
+        $roomtipe = RoomTipe::find($id);
+        // dd($roomtipe);
+        Storage::disk('local')->delete('public/rooms/' . basename($roomtipe->gambar));
         RoomTipe::find($id)->delete();
         return redirect('room-tipe');
     }

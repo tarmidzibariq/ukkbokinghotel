@@ -14,6 +14,7 @@ class RoomTipe extends Model
         'deskripsi',
         'kapasitas',
         'stock',
+        'gambar',
     ];
     protected $table = 'room_tipes';
 

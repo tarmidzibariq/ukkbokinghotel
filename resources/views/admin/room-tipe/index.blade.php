@@ -18,7 +18,8 @@
                     <tr>
                         <th>No</th>
                         <th>Room Tipe</th>
-                        <th>Room Ready</th>
+                        <th>Image</th>
+                        <th>Ready</th>
                         <th>Price</th>
                         <th>Rate</th>
                         <th>Description</th>
@@ -30,6 +31,7 @@
                         <tr>
                             <td>{{ $loop->iteration }}</td>
                             <td>{{ $item->nama }}</td>
+                            <td><img src="{{ asset('storage/rooms/'.$item->gambar) }}" alt="" width="80"></td>
                             <td>@php
                                 if (!empty($item->stock)) {
                                 echo $item->stock;

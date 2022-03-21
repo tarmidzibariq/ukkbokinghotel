@@ -22,6 +22,7 @@ class CreateReservationsTable extends Migration
             $table->date('tgl_masuk');
             $table->date('tgl_keluar');
             $table->integer('jumlah_kamar');
+            $table->integer('total');
             $table->integer('id_room')->nullable();
             $table->integer('id_room_tipe')->nullable();
             $table->timestamps();

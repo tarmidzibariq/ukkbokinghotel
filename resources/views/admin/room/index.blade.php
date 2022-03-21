@@ -2,7 +2,7 @@
 @section('content')
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
     <h1 class="h3 mb-0 text-gray-800">Rooms</h1>
-    <a href="{{ route('room.create') }}" class="btn btn-sm btn-primary shadow-sm"><i
+    <a href="" class="btn btn-sm btn-primary shadow-sm" data-toggle="modal" data-target="#tambah"><i
             class="fas fa-folder-plus fa-sm text-white-50"></i>&nbsp; Add Data</a>
 </div>
 
@@ -19,7 +19,7 @@
                         <th>No</th>
                         <th>Kode Rooms</th>
                         <th>Tipe Room</th>
-                        <td>Image</td>
+                        {{-- <td>Image</td> --}}
                         <th>Status</th>
                         <th>Action</th>
                     </tr>
@@ -35,7 +35,7 @@
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ $item->kode_kamar }}</td>
                         <td class="text-capitalize">{{ $a->where('id',$item->id_room_tipe)->first()->nama }}</td>
-                        <td><img src="{{ asset('storage/rooms/'.$item->gambar) }}" alt="" width="100"></td>
+                        {{-- <td><img src="{{ asset('storage/rooms/'.$item->gambar) }}" alt="" width="100"></td> --}}
                         <td> 
                             {{-- kalau non aktif --}}
                             @if ($item->status == '0')
@@ -86,11 +86,50 @@
                         </td>
                         <td>
                             <div class="row justify-content-center">
-                                <div class="col-2 ">
+                                {{-- <div class="col-2 ">
                                     <a href=""><i class="fas fa-eye " style="color: #12f325"></i></a>
-                                </div>
+                                </div> --}}
                                 <div class="col-2  ">
-                                    <a href="{{ route('room.edit',$item->id) }}"><i class="fas fa-edit " style="color: #f39c12"></i></a>
+                                    <a href=""data-toggle="modal" data-target="#edit{{$item->id}}"><i class="fas fa-edit " style="color: #f39c12"></i></a>
+                                    <div class="modal fade" id="edit{{$item->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLabel">Add Data</h5>
+                                                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">×</span>
+                                                    </button>
+                                                </div>
+                                                <form action=""method="post">
+                                                @csrf
+                                                <div class="modal-body">
+                                                        <div class="row">
+                                                            <div class="col-12">
+                                                                <label for="" class="form-label">Kode Rooms</label>
+                                                                <input type="text" class="form-control" name="kode_kamar" value="{{ $item->kode_kamar }}" readonly>
+                                                            </div>
+                                                            <div class="col-12 mt-2">
+                                                                <label for="" class="form-label">Tipe Rooms</label>
+                                                                <div class="card p-1">
+                                                                    <select name="id_room_tipe" id="selectedit" class="form-control " required>
+                                                                        <option value="" selected>--Chose One--</option>
+                                                                        <option value="{{ $item->id_room_tipe }} " selected>{{ $a->where('id',$item->id_room_tipe)->first()->nama }}</option>
+                                                                        @foreach ($roomtipe as $item)
+                                                                            <option value="{{ $item->id }}">{{ $item->nama }}</option>
+                                                                        @endforeach
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <a class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</a>
+                                                        <button type="submit" class="btn btn-danger">Delete</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="col-2  ">
                                     <a href="" class="m-0" data-toggle="modal" data-target="#hapus{{ $item->id }}"><i class="fas fa-trash text-danger" ></i></a> 
@@ -124,5 +163,54 @@
         </div>
     </div>
 </div>
-
+<div class="modal fade" id="tambah" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Add Data</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <form action="{{ route('room.store') }}"method="post">
+            @csrf
+            <div class="modal-body">
+                    <div class="row">
+                        <div class="col-12">
+                            <label for="" class="form-label">Kode Rooms</label>
+                            <input type="text" class="form-control" name="kode_kamar" value="{{ 'ROSE0'.$roomkode }}" readonly>
+                        </div>
+                        <div class="col-12 mt-2">
+                            <label for="" class="form-label">Tipe Rooms</label>
+                            <div class="card p-1">
+                                <select name="id_room_tipe" id="select" class="form-control " required>
+                                    <option value="" selected>--Chose One--</option>
+                                    @foreach ($roomtipe as $item)
+                                        <option value="{{ $item->id }}">{{ $item->nama }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <a class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</a>
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<script>
+    $('#select').select2({
+        placeholder: "Chose One",
+        allowClear: true
+    });
+    $('#selectedit').select2({
+        placeholder: "Chose One",
+        allowClear: true
+    });
+</script>
 @endsection
