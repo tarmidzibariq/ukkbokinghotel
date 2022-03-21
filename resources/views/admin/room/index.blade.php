@@ -39,16 +39,16 @@
                         <td> 
                             {{-- kalau non aktif --}}
                             @if ($item->status == '0')
-                                <form action="{{ route('room.nonactive',$item->id) }}}" method="post" style="display: inline">
+                                {{-- <form action="{{ route('room.nonactive',$item->id) }}}" method="post" style="display: inline">
                                     @csrf
-                                    <input type="hidden" name="id_room_tipe" value="{{ $item->id_room_tipe }}">
+                                    <input type="hidden" name="id_room_tipe" value="{{ $item->id_room_tipe }}"> --}}
                                     <button class="btn btn-danger btn-icon-split btn-sm" type="submit">
                                         <span class="icon text-white-50">
                                            <i class="fas fa-times-circle"></i>
                                         </span>
                                         <span class="text">Non Active</span>
                                     </button>
-                                </form>
+                                {{-- </form> --}}
                                 <form action="{{ route('room.active',$item->id) }}}" method="post" style="display: inline">
                                     @csrf
                                     <input type="hidden" name="id_room_tipe" value="{{ $item->id_room_tipe }}">
@@ -72,16 +72,16 @@
                                         <span class="text">Non Active</span>
                                     </button>
                                 </form>
-                                <form action="{{ route('room.active',$item->id) }}}" method="post" style="display: inline">
+                                {{-- <form action="{{ route('room.active',$item->id) }}}" method="post" style="display: inline">
                                     @csrf
-                                    <input type="hidden" name="id_room_tipe" value="{{ $item->id_room_tipe }}">
+                                    <input type="hidden" name="id_room_tipe" value="{{ $item->id_room_tipe }}"> --}}
                                     <button class="btn btn-success btn-icon-split btn-sm mt-2 mt-md-0" type="submit">
                                         <span class="icon text-white-50">
                                             <i class="fas fa-check"></i>
                                         </span>
                                         <span class="text">Active</span>
                                     </button>
-                                </form>
+                                {{-- </form> --}}
                             @endif
                         </td>
                         <td>
@@ -95,7 +95,7 @@
                                         <div class="modal-dialog modal-dialog-centered" role="document">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h5 class="modal-title" id="exampleModalLabel">Add Data</h5>
+                                                    <h5 class="modal-title" id="exampleModalLabel">Edit Data</h5>
                                                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                                                         <span aria-hidden="true">×</span>
                                                     </button>
@@ -124,7 +124,7 @@
                                                     </div>
                                                     <div class="modal-footer">
                                                         <a class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</a>
-                                                        <button type="submit" class="btn btn-danger">Delete</button>
+                                                        <button type="submit" class="btn btn-success">Submit</button>
                                                     </div>
                                                 </form>
                                             </div>
@@ -195,7 +195,7 @@
                 </div>
                 <div class="modal-footer">
                     <a class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</a>
-                    <button type="submit" class="btn btn-danger">Delete</button>
+                    <button type="submit" class="btn btn-success">Submit</button>
                 </div>
             </form>
         </div>

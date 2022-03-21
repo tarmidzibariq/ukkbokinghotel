@@ -43,7 +43,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                     <li class="nav-item ms-2">
-                        <a class="nav-link" href="#head">HOME</a>
+                        <a class="nav-link" href="{{ route('index') }}">HOME</a>
                     </li>
                     <li class="nav-item ms-2">
                         <a class="nav-link" href="#turun">ABOUT</a>
@@ -59,7 +59,8 @@
                     <div class="d-flex justify-content-center ">
                         <div class="col-md-10 col-12 py-4 py-lg-0  ">
 
-                            <form action="">
+                            <form action="{{ route('store') }}" method="post">
+                                @csrf
                                 <div id="scroll">
                                     <div class="row bg-white py-3 px-3 rounded-top shadow ">
                                         <div class="col-lg-3 col-4">
@@ -72,7 +73,7 @@
                                             <label for="">Check-out</label>
                                             <input type="date"
                                                 class="form-control rounded-0 border-1 border-white p-2 mt-1 bg-light"
-                                                value="{{ $tgl_keluar }}">
+                                                value="{{ $tgl_keluar ?? date('Y-m-d', strtotime('+1 days')) }}">
                                         </div>
                                         <div class="col-lg-2 col-4">
                                             <label for="">Tamu</label>
@@ -133,19 +134,22 @@
                                                 </div> --}}
                                             </div>
                                             <div class="row mt-4">
-                                                <form action="" method="post">
+                                                <form action="{{ route('storeup') }}" method="post">
+                                                @csrf
                                                     <div class="d-flex justify-content-lg-end">
                                                         <div class="col-6 col-lg-3 me-3">
                                                             <div class="d-flex justify-content-between inputgrup">
                                                                 <input type="button" value="-" class="button-minus btn btn-danger"
                                                                     data-field="quantity">
-                                                                <input type="number" step="1" min="0" max="{{ $item->stock }}" value="0" name="quantity"
+                                                                <input type="number" step="1" min="1" max="{{ $item->stock }}" value="0" name="quantity"
                                                                     class="quantity-field">
                                                                 <input type="button" value="+" class="button-plus btn btn-success"
                                                                     data-field="quantity">
                                                             </div>
-
                                                         </div>
+                                                        <input type="hidden" value="{{ $tgl_mulai }}" name="tgl_mulai">
+                                                        <input type="hidden" value="{{ $tgl_keluar }}" name="tgl_keluar">
+                                                        <input type="hidden" value="{{ $tamu }}" name="tamu">
                                                         <div class="col-6 col-lg-3">
                                                             <button class="btn btn-primary text-center w-100 text-white "
                                                                 type="submit">{{ 'Rp '.number_format($item->harga) }}</button>
@@ -159,86 +163,6 @@
                                 @endif
                                 
                             @endforeach
-                            {{-- <div class="row py-3 px-3 bg-white shadow list-room mt-3 rounded">
-                                <div class="col-5 col-lg-4">
-                                    <img src="{{ asset('image/head-1.jpg') }}" alt="" class=" rounded">
-                                </div>
-                                <div class="col-7-lg-8 col">
-                                    <div class="title">
-                                        <div class="d-flex justify-content-between border-bottom align-items-center">
-                                            <h4 class="mb-3">Kamar Standard Double</h4>
-                                            <p class="mb-3 text-danger text-end">Sisa 1 kamar lagi!a sdasdasdasdd</p>
-                                        </div>
-                                        <div class="row mt-3">
-                                            <div class="col-6">
-                                                <p> - 2 semi double beds</p>
-                                            </div>
-                                            <div class="col-6">
-                                                <p>- Wifi</p>
-                                            </div>
-                                        </div>
-                                        <div class="row mt-4">
-                                            <div class="d-flex justify-content-lg-end">
-                                                <div class="col-6 col-lg-3 me-3">
-                                                    <div class="d-flex justify-content-between inputgrup">
-                                                        <input type="button" value="-" class="button-minus btn btn-danger"
-                                                            data-field="quantity">
-                                                        <input type="number" step="1" max="" value="1" name="quantity"
-                                                            class="quantity-field">
-                                                        <input type="button" value="+" class="button-plus btn btn-success"
-                                                            data-field="quantity">
-                                                    </div>
-
-                                                </div>
-                                                <div class="col-6 col-lg-3">
-                                                    <button class="btn btn-primary text-center w-100 text-white "
-                                                        type="submit">Pilih</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row py-3 px-3 bg-white shadow list-room mt-3 rounded">
-                                <div class="col-5 col-lg-4">
-                                    <img src="{{ asset('image/head-1.jpg') }}" alt="" class=" rounded">
-                                </div>
-                                <div class="col-7-lg-8 col">
-                                    <div class="title">
-                                        <div class="d-flex justify-content-between border-bottom align-items-center">
-                                            <h4 class="mb-3">Kamar Standard Double</h4>
-                                            <p class="mb-3 text-danger text-end">Sisa 1 kamar lagi!a sdasdasdasdd</p>
-                                        </div>
-                                        <div class="row mt-3">
-                                            <div class="col-6">
-                                                <p> - 2 semi double beds</p>
-                                            </div>
-                                            <div class="col-6">
-                                                <p>- Wifi</p>
-                                            </div>
-                                        </div>
-                                        <div class="row mt-4">
-                                            <div class="d-flex justify-content-lg-end">
-                                                <div class="col-6 col-lg-3 me-3">
-                                                    <div class="d-flex justify-content-between inputgrup">
-                                                        <input type="button" value="-" class="button-minus btn btn-danger"
-                                                            data-field="quantity">
-                                                        <input type="number" step="1" max="" value="1" name="quantity"
-                                                            class="quantity-field">
-                                                        <input type="button" value="+" class="button-plus btn btn-success"
-                                                            data-field="quantity">
-                                                    </div>
-
-                                                </div>
-                                                <div class="col-6 col-lg-3">
-                                                    <button class="btn btn-primary text-center w-100 text-white "
-                                                        type="submit">Pilih</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div> --}}
                         </div>
                     </div>
                 </div>

@@ -21,7 +21,8 @@ class FacilityRoomController extends Controller
     public function index()
     {
         $facilityroom = FacilityRoom::orderBy('created_at', 'DESC')->get();
-        return view('admin.fasilitas-room.index',compact('facilityroom'));
+        $roomtipe = RoomTipe::orderBy('created_at', 'DESC')->get();
+        return view('admin.fasilitas-room.index',compact('facilityroom','roomtipe'));
     }
 
     /**

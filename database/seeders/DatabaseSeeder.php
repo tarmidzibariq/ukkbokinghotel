@@ -26,6 +26,21 @@ class DatabaseSeeder extends Seeder
             'password' => Hash::make('12345678'),
             'role' => 'Resepsionis',
         ]);
+        DB::table('rooms')->insert([
+            'kode_kamar' => 'ROSE01',
+            'id_room_tipe' => '1',
+            'status' => '0',
+        ]);
+        DB::table('rooms')->insert([
+            'kode_kamar' => 'ROSE02',
+            'id_room_tipe' => '2',
+            'status' => '0',
+        ]);
+        DB::table('rooms')->insert([
+            'kode_kamar' =>'ROSE03',
+            'id_room_tipe' =>'1',
+            'status'=>'0',
+        ]);
         DB::table('room_tipes')->insert([
             'nama'=>'Superior',
             'harga'=>'500000',
@@ -38,8 +53,14 @@ class DatabaseSeeder extends Seeder
             'harga' => '350000',
             'deskripsi' => 'Wi-Fi gratis',
             'kapasitas' => '1 Tamu',
-            'gambar' => 'roomhotel1.jpg',
+            'gambar' => 'roomhotel2.jpg',
         ]);
+        
+        // DB::table('rooms')->insert([
+        //     'kode_kamar' =>'ROSE03',
+        //     'id_room_tipe' =>'1',
+        //     'status'=>'0',
+        // ]);
         // DB::table('rooms')->insert([
         //     'kode_kamar' => 'ROSE01',
         //     'gambar' => 'roomhotel1.jpg',
