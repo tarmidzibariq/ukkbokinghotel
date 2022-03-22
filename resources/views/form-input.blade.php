@@ -34,7 +34,7 @@
     <!-- <h1>Hello, world!</h1> -->
     <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom border-1 p-0 mb-1">
         <div class="container">
-            <a class="navbar-brand " href="#">Rose Hotels</a>
+            <a class="navbar-brand " href="{{ route('index') }}">Rose Hotels</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -43,10 +43,10 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                     <li class="nav-item ms-2">
-                        <a class="nav-link" href="{{ route('index') }}">HOME</a>
+                        {{-- <a class="nav-link" href="{{ route('index') }}">HOME</a> --}}
                     </li>
                     <li class="nav-item ms-2">
-                        <a class="nav-link" href="#turun">ABOUT</a>
+                        {{-- <a class="nav-link" href="#turun">ABOUT</a> --}}
                     </li>
                 </ul>
             </div>
@@ -67,7 +67,7 @@
                                             <label for="">Check-in</label>
                                             <input type="date"
                                                 class=" form-control rounded-0 border-1 border-white p-2 mt-1 bg-light"
-                                                value="{{ $tgl_mulai }}" name="tgl_mulai" >
+                                                value="{{ $tgl_masuk }}" name="tgl_masuk" >
                                         </div>
                                         <div class="col-lg-3 col-4">
                                             <label for="">Check-out</label>
@@ -113,7 +113,7 @@
                                         <div class="title">
                                             <div class="d-flex justify-content-between border-bottom align-items-center">
                                                 <div>
-                                                    <h4 class="mb-1">{{ $item->nama }}</h4>
+                                                    <h4 class="mb-1 text-capitalize">{{ $item->nama }}</h4>
                                                     <p class="text-danger mb-1 fw-bold" style="font-size: 12px">{{'*Tersedia '.$item->stock  }}</p>
                                                 </div>
                                                 <p class="mb-3 text-danger text-end">{{ $item->deskripsi }}</p>
@@ -134,7 +134,7 @@
                                                 </div> --}}
                                             </div>
                                             <div class="row mt-4">
-                                                <form action="{{ route('storeup') }}" method="post">
+                                                <form action="{{ route('storeup',$item->id) }}" method="post">
                                                 @csrf
                                                     <div class="d-flex justify-content-lg-end">
                                                         <div class="col-6 col-lg-3 me-3">
@@ -147,7 +147,7 @@
                                                                     data-field="quantity">
                                                             </div>
                                                         </div>
-                                                        <input type="hidden" value="{{ $tgl_mulai }}" name="tgl_mulai">
+                                                        <input type="hidden" value="{{ $tgl_masuk }}" name="tgl_masuk">
                                                         <input type="hidden" value="{{ $tgl_keluar }}" name="tgl_keluar">
                                                         <input type="hidden" value="{{ $tamu }}" name="tamu">
                                                         <div class="col-6 col-lg-3">

@@ -31,7 +31,7 @@
     <!-- <h1>Hello, world!</h1> -->
     <nav class="navbar navbar-expand-lg navbar-light fixed-top bg-white border-bottom border-1 p-0 mb-5">
         <div class="container">
-            <a class="navbar-brand " href="#">Rose Hotels</a>
+            <a class="navbar-brand " href="{{ route('index') }}">Rose Hotels</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -97,7 +97,7 @@
                                 <div class="col-lg-3 col-3">
                                     <label for="">Check-in</label>
                                     <input type="date" class=" form-control rounded-0 border-1 border-white p-2 mt-1"
-                                        value="{{ date('Y-m-d') }}" name="tgl_mulai" required>
+                                        value="{{ date('Y-m-d') }}" name="tgl_masuk" required>
                                 </div>
                                 <div class="col-lg-3 col-3">
                                     <label for="">Check-out</label>
@@ -140,7 +140,7 @@
                             <img src="{{ asset('storage/facilityhotel/'.$item->gambar) }}" alt="" class="">
                             <div class="overlay">
                                 <div class="text">
-                                    <h3>{{ $item->nama_barang }}</h3>
+                                    <h3 class="text-capitalize">{{ $item->nama_barang }}</h3>
                                 </div>
                             </div>
                         </div>

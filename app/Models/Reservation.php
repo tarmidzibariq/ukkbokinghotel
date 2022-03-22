@@ -13,6 +13,7 @@ class Reservation extends Model
         'email',
         'no_telp',
         'nama_tamu',
+        'tamu',
         'tgl_masuk',
         'tgl_keluar',
         'quantity',

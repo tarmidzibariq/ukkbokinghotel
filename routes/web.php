@@ -20,14 +20,15 @@ use App\Http\Controllers\DashboardDefaultController;
 Route::get('/form-reservasi', function () {
     return view('form-reservasi');
 });
-Route::get('/admin', function () {
-    return view('master');
-});
+// Route::get('/admin', function () {
+//     return view('master');
+// });
 // default home
 Route::get('/', [DashboardDefaultController::class, 'index'])->name('index');
 Route::get('/forminput', [DashboardDefaultController::class, 'forminput'])->name('forminput');
 Route::post('/store', [DashboardDefaultController::class, 'store'])->name('store');
-Route::post('/store/storeup', [DashboardDefaultController::class, 'storeup'])->name('storeup');
+Route::post('/store/storeup/{id}', [DashboardDefaultController::class, 'storeup'])->name('storeup');
+Route::post('/store/storeup/check/{id}', [DashboardDefaultController::class, 'check'])->name('check');
 
 
 

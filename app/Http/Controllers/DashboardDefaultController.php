@@ -27,20 +27,43 @@ class DashboardDefaultController extends Controller
     
     public function store(Request $request)
     {
-        $tgl_mulai = $request->tgl_mulai;
+        $tgl_masuk = $request->tgl_masuk;
         $tgl_keluar = $request->tgl_keluar;
         $tamu = $request->tamu;
 
         $roomtipe= RoomTipe::orderBy('id', 'DESC')->get();
         $facilityroom = FacilityRoom::all();
-        return view('form-input', compact('tgl_mulai','tgl_keluar','tamu','roomtipe', 'facilityroom'));
+        return view('form-input', compact('tgl_masuk','tgl_keluar','tamu','roomtipe', 'facilityroom'));
     }
 
-    public function storeup(Request $request)
+    public function storeup(Request $request,$id)
     {
-        dd($request);
-        $tgl_mulai = $request->tgl_mulai;
+        // dd($request);
+        $tgl_masuk = $request->tgl_masuk;
         $tgl_keluar = $request->tgl_keluar;
         $tamu = $request->tamu;
+        $quantity = $request->quantity;
+        $roomtipe = RoomTipe::find($id);
+        // dd($roomtipe);
+        return view('form-reservasi', compact('tgl_masuk', 'tgl_keluar', 'tamu','quantity','roomtipe'));
+
+    }
+
+    public function check(Request $request, $id)
+    {
+        // dd($request);   
+        Reservation::create([
+            'nama'=> $request->nama,
+            'email'=> $request->email,
+            'no_telp'=> $request->no_telp,
+            'nama_tamu'=> $request->nama_tamu,
+            'tamu'=> $request->tamu,
+            'tgl_masuk'=> $request->tgl_masuk,
+            'tgl_keluar'=> $request->tgl_keluar,
+            'quantity'=> $request->quantity,
+            'total'=> $request->total,
+            'id_room_tipe'=> $request->id_room_tipe,
+        ]);
+        return redirect()->route('index');
     }
 }

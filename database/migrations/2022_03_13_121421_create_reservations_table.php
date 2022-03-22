@@ -17,8 +17,9 @@ class CreateReservationsTable extends Migration
             $table->id();
             $table->string('nama');
             $table->string('email');
-            $table->integer('no_telp');
+            $table->string('no_telp');
             $table->string('nama_tamu');
+            $table->integer('tamu'); //jumlah tamu
             $table->date('tgl_masuk');
             $table->date('tgl_keluar');
             $table->integer('quantity'); // jumlah kamar
