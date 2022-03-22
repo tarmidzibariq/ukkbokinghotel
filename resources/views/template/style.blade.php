@@ -624,4 +624,96 @@ header .content .card .choice button:hover {
     font-size: 12px;
 } */
 
+/* bukti reservasi */
+#bukti-reservasi{
+    font-family: 'Assistant', sans-serif;
+    width: 50%;
+    margin:10px;
+}
+#bukti-reservasi .border{
+    border: 2px solid black;
+    padding: 20px 40px;
+}
+#bukti-reservasi .border .display{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #4a4a4a;
+}
+#bukti-reservasi .border .header{
+    display: flex;
+    align-content: center;
+}
+#bukti-reservasi .border .header img{
+    margin-right: 15px;
+    color: #fb387e !important;
+}
+#bukti-reservasi .border .header h3{
+    font-family: 'Lobster',
+        cursive;
+    font-size: 30px;
+    font-weight: normal;
+    margin: 0px;
+    color: #fb387e !important;
+}
+#bukti-reservasi .border .header-room h2{
+    font-size: 20px;
+    margin: 10px 0;
+    font-weight: 400;
+}
+#bukti-reservasi .border .content{
+    width: 100%;
+    color: #2c2c2c;
+}
+#bukti-reservasi .border .content .header{
+    display: flex;
+    justify-content: center;
+    
+}
+#bukti-reservasi .border .content .header h4{
+    font-size: 25px;
+    font-weight: 400;
+    margin: 20px 0;
+    color: #000;
+}
+#bukti-reservasi .border .content .header-text{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+#bukti-reservasi .border .content .header-text p{
+    margin: 5px 0;
+}
+#bukti-reservasi .border .content .header-text .header-text-2{
+    text-align: right;
+}
+#bukti-reservasi .border .content .border{
+    margin-top: 10px;
+    border-radius: 10px;
+    border: 2px solid #4a4a4a;
+    padding: 20px 40px;
+}
+#bukti-reservasi .border .content .border .text .col{
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 2px dashed #4a4a4a;
+}
+#bukti-reservasi .border .content .border .text .col p{
+    margin: 15px 0 10px;
+}
+#bukti-reservasi .border .content .border .total{
+    display: flex;
+    justify-content: space-between; 
+    margin-top: 10px;
+}
+#bukti-reservasi .border .content .border .total .text p{
+    margin: 10px 0;
+}
+#bukti-reservasi .border .content .border .total .text:first-child{
+    text-align: left;
+}
+#bukti-reservasi .border .content .border .total .text:last-child{
+    text-align: right;
+}
 </style>

@@ -17,8 +17,8 @@ use App\Http\Controllers\DashboardDefaultController;
 |
 */
 
-Route::get('/form-reservasi', function () {
-    return view('form-reservasi');
+Route::get('/bukti-reservasi', function () {
+    return view('bukti-reservasi');
 });
 // Route::get('/admin', function () {
 //     return view('master');
