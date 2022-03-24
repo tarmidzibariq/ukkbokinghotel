@@ -8,6 +8,7 @@ use App\Models\Room;
 use App\Models\FacilityRoom;
 use App\Models\RoomTipe;
 use App\Models\Reservation;
+use Barryvdh\DomPDF\Facade\Pdf;
 class DashboardDefaultController extends Controller
 {
     public function index()
@@ -64,6 +65,43 @@ class DashboardDefaultController extends Controller
             'total'=> $request->total,
             'id_room_tipe'=> $request->id_room_tipe,
         ]);
-        return redirect()->route('index');
+        $nama= $request->nama;
+        $email= $request->email;
+        $no_telp= $request->no_telp;
+        $nama_tamu= $request->nama_tamu;
+        $tamu= $request->tamu;
+        $tgl_masuk= $request->tgl_masuk;
+        $tgl_keluar= $request->tgl_keluar;
+        $quantity= $request->quantity;
+        $total= $request->total;
+        $id_room_tipe= $request->id_room_tipe;
+        $created_at= $request->created_at;
+        $roomtipe = RoomTipe::find($id);
+        $reservasi = Reservation::where('nama', $nama)->orderBy('id','DESC')->first();
+        // dd($reservasi);
+        return view('bukti',compact('nama','email','no_telp','nama_tamu','tamu','tgl_masuk','tgl_keluar','quantity','total','id_room_tipe', 'created_at','roomtipe', 'reservasi'));
+        // return redirect('bukti');
+    }
+    public function buktireservasi(Request $request, $id)
+    {
+        $nama = $request->nama;
+        $email = $request->email;
+        $no_telp = $request->no_telp;
+        $nama_tamu = $request->nama_tamu;
+        $tamu = $request->tamu;
+        $tgl_masuk = $request->tgl_masuk;
+        $tgl_keluar = $request->tgl_keluar;
+        $quantity = $request->quantity;
+        $total = $request->total;
+        $id_room_tipe = $request->id_room_tipe;
+        $created_at = $request->created_at;
+        $roomtipe = RoomTipe::find($id);
+        $reservasi = Reservation::where('nama', $nama)->orderBy('id', 'DESC')->first();
+        // $pdf = PDF::loadView('bukti', compact('nama', 'email', 'no_telp', 'nama_tamu', 'tamu', 'tgl_masuk', 'tgl_keluar', 'quantity', 'total', 'id_room_tipe', 'created_at', 'roomtipe', 'reservasi'));
+        // return $pdf->download('invoice.pdf');
+        // return view('bukti-reservasi');
+        // $data = RoomTipe::all();
+        $pdf = PDF::loadView('bukti-reservasi', compact('nama', 'email', 'no_telp', 'nama_tamu', 'tamu', 'tgl_masuk', 'tgl_keluar', 'quantity', 'total', 'id_room_tipe', 'created_at', 'roomtipe', 'reservasi'))->setPaper('a4');
+        return $pdf->download('bukti-reservasi.pdf');
     }
 }

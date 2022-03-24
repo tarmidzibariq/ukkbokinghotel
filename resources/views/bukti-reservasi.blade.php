@@ -19,8 +19,8 @@
     <style>
         #bukti-reservasi {
             font-family: 'Assistant', sans-serif;
-            width: 50%;
-            margin: 10px;
+            width: 100%;
+            /* margin: 5px; */
         }
 
         #bukti-reservasi .border {
@@ -29,9 +29,9 @@
         }
 
         #bukti-reservasi .border .display {
-            display: flex;
+            /* display: flex;
             justify-content: space-between;
-            align-items: center;
+            align-items: center; */
             padding-bottom: 10px;
             border-bottom: 2px solid #4a4a4a;
         }
@@ -134,13 +134,7 @@
 
     @stack('after-style') --}}
 
-    @include('template.library')
-    <style>
-        .transit {
-            transition: 1s;
-        }
-
-    </style>
+    {{-- @include('template.library') --}}
 </head>
 
 <body class="bg-white">
@@ -148,23 +142,47 @@
     <section id="bukti-reservasi">
         <div class="border">
             <div class="display">
-                <div class="header">
-                    <img src="{{ asset('image/hotel-solid 1.png') }}" alt="" width="70px" height="80px">
+                <table style="width: 100%">
+                    <tr>
+                        <td class="header">
+                            <h3>Rose <br> Hotels & Resort</h3>
+                        </td>
+                        <td class="header-room">
+                            <h2 style="text-align:right;">rosehotels.com</h2>
+                        </td>
+                    </tr>
+                </table>
+                {{-- <div class="header">
                     <div>
                         <h3>Rose</h3>
                         <h3>Hotels & Resort</h3>
                     </div>
                 </div>
                 <div class="header-room">
-                    <h2>rosehotels.com</h2>
-                </div>
+                    <h2 style="text-align:right;">rosehotels.com</h2>
+                </div> --}}
             </div>
             <div class="content">
                 <div class="header">
-                    <h4>INVOICE</h4>
+                    <h4 style="text-align: center;">INVOICE</h4>
                 </div>
                 <div class="header-text">
-                    <div class="header-text-1">
+                    <table style="width: 100%">
+                        <tr>
+                            <td>{{ $nama }}
+                                <br>
+                                {{ $email }}
+                                <br>
+                                {{ $no_telp }}
+                            </td>
+                            <td style="text-align:right;">
+                                <b>Invoice #{{ $reservasi->id }}</b>
+                                <br>
+                                {{ Carbon\Carbon::parse($created_at)->isoFormat("ddd, D MMMM Y") }}
+                            </td>
+                        </tr>
+                    </table>
+                    {{-- <div class="header-text-1">
                         <p>Muhammad Tarmidzi Bariq</p>
                         <p>tarmidzibariq@gmail.com</p>
                         <p>6281220745317</p>
@@ -172,33 +190,87 @@
                     <div class="header-text-2">
                         <p><b>Invoice #123</b></p>
                         <p>Rab, 5 Maret 2022</p>
-                    </div>
+                    </div> --}}
                 </div>
                 <div class="border">
                     <div class="text">
                         <div class="col">
-                            <p>Nama Tamu</p>
-                            <p>Muhammad Tarmidzi Bariq</p>
+                            <table style="width: 100%;margin:10px 0;">
+                                <tr>
+                                    <td>Nama Tamu</td>
+                                    <td style="text-align: right; text-transform: capitalize;">{{ $nama_tamu }}
+                                    </td>
+                                </tr>
+                            </table>
+                            {{-- <p>Nama Tamu</p>
+                            <p>Muhammad Tarmidzi Bariq</p> --}}
                         </div>
                         <div class="col">
-                            <p>Jumlah Tamu</p>
-                            <p>1 orang</p>
+                            <table style="width: 100%;margin:10px 0;">
+                                <tr>
+                                    <td>Jumlah Tamu</td>
+                                    <td style="text-align: right;">{{ $tamu.' orang' }}</td>
+                                </tr>
+                            </table>
+                            {{-- <p>Jumlah Tamu</p>
+                            <p>1 orang</p> --}}
                         </div>
                         <div class="col">
-                            <p>Check-in</p>
-                            <p>Rab, 5 Maret 2022</p>
+                            <table style="width: 100%;margin:10px 0;">
+                                <tr>
+                                    <td>Check-in</td>
+                                    <td style="text-align: right;">{{ Carbon\Carbon::parse($tgl_masuk)->isoFormat("ddd, D MMMM Y") }}</td>
+                                </tr>
+                            </table>
+                            {{-- <p>Check-in</p>
+                            <p>Rab, 5 Maret 2022</p> --}}
                         </div>
                         <div class="col">
-                            <p>Check-out</p>
-                            <p>Kam, 6 Maret 2022</p>
+                            <table style="width: 100%;margin:10px 0; ">
+                                <tr>
+                                    <td>Check-out</td>
+                                    <td style="text-align: right;">{{ Carbon\Carbon::parse($tgl_keluar)->isoFormat("ddd, D MMMM Y") }}</td>
+                                </tr>
+                            </table>
+                            {{-- <p>Check-out</p>
+                            <p>Kam, 6 Maret 2022</p> --}}
                         </div>
                         <div class="col">
-                            <p>Tipe Kamar</p>
-                            <p>Deluxe</p>
+                            <table style="width: 100%; margin:10px 0;">
+                                <tr>
+                                    <td>Tipe Kamar</td>
+                                    <td style="text-align: right; text-transform: capitalize;">{{ $roomtipe->nama }}</td>
+                                </tr>
+                            </table>
+                            {{-- <p>Tipe Kamar</p>
+                            <p>Deluxe</p> --}}
                         </div>
                     </div>
                     <div class="total">
-                        <div style="width: 50%">
+                        <table style="width: 100%;margin:10px 0;">
+                            <tr>
+                                <td style="width: 50%; "></td>
+                                <td>Harga Kamar</td>
+                                <td style="text-align: right;">{{ 'IDR '.number_format($roomtipe->harga) }}</td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td style="width: 50%; "></td>
+                                <td>Jumlah Dipesan</td>
+                                <td style="text-align: right;">{{ $quantity }}</td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td style="width: 50%; "></td>
+                                <td>Total</td>
+                                <td style="text-align: right;"><b>{{ 'IDR '.number_format($total) }}</b></td>
+                            </tr>
+                        </table>
+                        {{-- <div style="width: 50%">
                         </div>
                         <div class="text">
                             <p>Harga Kamar</p>
@@ -209,7 +281,7 @@
                             <p>IDR 350.000</p>
                             <p>1</p>
                             <p><b>IDR 350.000</b></p>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
             </div>

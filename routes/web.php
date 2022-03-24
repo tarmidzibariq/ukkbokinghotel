@@ -20,6 +20,9 @@ use App\Http\Controllers\DashboardDefaultController;
 Route::get('/bukti-reservasi', function () {
     return view('bukti-reservasi');
 });
+// Route::get('/bukti', function () {
+//     return view('bukti');
+// });
 // Route::get('/admin', function () {
 //     return view('master');
 // });
@@ -29,6 +32,8 @@ Route::get('/forminput', [DashboardDefaultController::class, 'forminput'])->name
 Route::post('/store', [DashboardDefaultController::class, 'store'])->name('store');
 Route::post('/store/storeup/{id}', [DashboardDefaultController::class, 'storeup'])->name('storeup');
 Route::post('/store/storeup/check/{id}', [DashboardDefaultController::class, 'check'])->name('check');
+Route::post('/store/storeup/check/buktireservasi/{id}', [DashboardDefaultController::class, 'buktireservasi'])->name('buktireservasi');
+// Route::get('/store/storeup/check/buktireservasi/', [DashboardDefaultController::class, 'buktireservasi'])->name('buktireservasi');
 
 
 
