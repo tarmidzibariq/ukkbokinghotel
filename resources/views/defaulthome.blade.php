@@ -96,12 +96,11 @@
                             <div class="row">
                                 <div class="col-lg-3 col-3">
                                     <label for="">Check-in</label>
-                                    <input type="date" class=" form-control rounded-0 border-1 border-white p-2 mt-1"
-                                        value="{{ date('Y-m-d') }}" name="tgl_masuk" required>
+                                    <input type="text" class=" form-control rounded-0 border-1 border-white p-2 mt-1" value="{{ date('Y-m-d', strtotime('+3 days')) }}" name="tgl_masuk" id="tgl_awal" required>
                                 </div>
                                 <div class="col-lg-3 col-3">
                                     <label for="">Check-out</label>
-                                    <input type="date" class="form-control rounded-0 border-1 border-white p-2 mt-1" value="{{ date('Y-m-d', strtotime('+1 days')) }}" name="tgl_keluar" required>
+                                    <input type="text" class="form-control rounded-0 border-1 border-white p-2 mt-1" value="{{ date('Y-m-d', strtotime('+4 days')) }}" id="tgl_akhir" name="tgl_keluar" required>
                                 </div>
                                 <div class="col-lg-2 col-3">
                                     <label for="">Tamu</label>
@@ -392,14 +391,54 @@
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
     </script>
     {{-- select2 --}}
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    {{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> --}}
+
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://momentjs.com/downloads/moment.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+    {{-- datepicker --}}
+    <script>
+        var awal= document.getElementById('tgl_awal');
+    $( function() {
+        $( "#tgl_awal" ).datepicker({                  
+            minDate: moment().add('d', 3).toDate(),
+        });
+        $( "#tgl_akhir" ).datepicker({                  
+            minDate: moment().add('d', 4).toDate(),
+        });
+    } );
+    $( function() {
+    } );
+    // var $start = $('#tgl_awal'),
+    // $end = $('#end');
+
+    // $start.datepicker({
+    //     onSelect: function (fd, date) {
+    //         $end.data('datepicker')
+    //                 .update('minDate', date);
+
+    //         $end.focus();
+    //     }
+    // })
+
+    // $end.datepicker({
+    //     onSelect: function (fd, date) {
+    //         $start.data('datepicker')
+    //                 .update('maxDate', date)
+    //     }
+    // })
+
+        
+    </script>
+    {{-- <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <script>
         $('#select').select2({
             placeholder: "Chose One",
             allowClear: true
         });
-    </script>
+    </script> --}}
     @include('template.js')
     {{-- <script src="../js/index.js"></script> --}}
 </body>

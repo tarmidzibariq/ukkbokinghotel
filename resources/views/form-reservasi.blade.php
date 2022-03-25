@@ -161,7 +161,7 @@
                                             </div>
                                         </div>
                                         <a href="" type="button" class="btn btn-success w-100 mt-3" data-bs-toggle="modal" data-bs-target="#input" style="border-radius: 10px;"  >
-                                            Submit
+                                            Boking Now
                                         </a>
                                         {{-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
                                             Launch demo modal

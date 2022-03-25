@@ -180,31 +180,6 @@ class DatabaseSeeder extends Seeder
             'nama_barang' => 'Jam alarm/layanan bangun tidur',
         ]);
         
-        // DB::table('rooms')->insert([
-        //     'kode_kamar' =>'ROSE03',
-        //     'id_room_tipe' =>'1',
-        //     'status'=>'0',
-        // ]);
-        // DB::table('rooms')->insert([
-        //     'kode_kamar' => 'ROSE01',
-        //     'gambar' => 'roomhotel1.jpg',
-        //     'deskripsi' => 'dengan ruangan yang mewah dan pelayanan yang terbaik',
-        //     'kapasitas' => '2',
-        //     'tgl_tersedia' => '2022-03-16',
-        //     'harga' => '500000',
-        //     'status' => '1',
-        //     'id_room_tipe' => '1',
-        // ]);
-        // DB::table('rooms')->insert([
-        //     'kode_kamar' => 'ROSE02',
-        //     'gambar' => 'roomhotel2.jpg',
-        //     'deskripsi' => 'dengan ruangan yang mewah dan pelayanan yang terbaik',
-        //     'kapasitas' => '2',
-        //     'tgl_tersedia' => '2022-03-18',
-        //     'harga' => '350000',
-        //     'status' => '1',
-        //     'id_room_tipe' => '2',
-        // ]);
         DB::table('facility_hotels')->insert([
             'nama_barang' => 'Swimming Pool',
             'gambar' => 'kolam.jpg',
@@ -212,6 +187,19 @@ class DatabaseSeeder extends Seeder
         DB::table('facility_hotels')->insert([
             'nama_barang' => 'Gym Fitness',
             'gambar' => 'gym.jpg',
+        ]);
+
+        DB::table('reservations')->insert([
+            'nama' => 'muhammad tarmidzi bariq',
+            'email' => 'tarmidz@gmail.com',
+            'no_telp' => '081220745317',
+            'nama_tamu' => 'bariq',
+            'tamu' => '2',
+            'tgl_masuk' => '2022-03-30',
+            'tgl_keluar' => '2022-03-31',
+            'quantity' => '2',
+            'total' => '800000',
+            'id_room_tipe' => '3',
         ]);
     }
 }

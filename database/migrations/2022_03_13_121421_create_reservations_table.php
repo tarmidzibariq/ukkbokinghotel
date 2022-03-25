@@ -20,10 +20,11 @@ class CreateReservationsTable extends Migration
             $table->string('no_telp');
             $table->string('nama_tamu');
             $table->integer('tamu'); //jumlah tamu
-            $table->date('tgl_masuk');
-            $table->date('tgl_keluar');
+            $table->string('tgl_masuk');//date
+            $table->string('tgl_keluar');//date
             $table->integer('quantity'); // jumlah kamar
             $table->integer('total');
+            $table->string('status')->nullable();
             $table->integer('id_room')->nullable();
             $table->integer('id_room_tipe')->nullable();
             $table->timestamps();

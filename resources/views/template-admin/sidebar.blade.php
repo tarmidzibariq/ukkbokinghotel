@@ -25,6 +25,8 @@
     <div class="sidebar-heading">
         Interface
     </div>
+    @if(Auth::check())
+    @if(Auth::user()->role == 'admin')
     @php
         $roomtipe = ['room-tipe.index','room-tipe.create'];
         $rooms = ['room.index','room.create','room.edit'];
@@ -48,8 +50,6 @@
         </div>
     </li>
     @php
-        // $satuin = ['facility-hotels.index','facility-hotels.create','facility-hotels.edit','facility-room.index','facility-room.create','facility-room.edit'];
-        // $farooms = ['facility-room.index','facility-room.create','facility-room.edit'];
         $fahotels = ['facility-hotels.index','facility-hotels.create','facility-hotels.edit'];
     @endphp
     <!-- Nav Item - Utilities Collapse Menu -->
@@ -74,6 +74,26 @@
     <div class="text-center d-none d-md-inline">
         <button class="rounded-circle border-0" id="sidebarToggle"></button>
     </div>
-    
+    @endif
+    @if(Auth::user()->role == 'Resepsionis')
+
+    @php
+        $reservation = ['reservasi.index'];
+    @endphp
+    <li class="nav-item {{ Request::routeIs($reservation) ? 'active' : ''}}">
+        <a class="nav-link" href="{{ route('reservasi.index') }}">
+            <i class="fas fa-shopping-cart"></i>
+            <span>Reservasi</span>
+        </a>
+        {{-- <div id="collapseUtilities" class="collapse " aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header ">Entri Boking</h6>
+                <a class="collapse-item " href="">Facility Hotels</a>
+                <a class="collapse-item {{ Request::routeIs($farooms) ? 'active' : ''}}" href="{{ route('facility-room.index') }}">Facility Rooms</a>
+            </div>
+        </div> --}}
+    </li>
+    @endif
+    @endif
 
 </ul>

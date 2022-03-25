@@ -28,9 +28,6 @@
                         use App\Models\RoomTipe;
                         use App\Models\FacilityRoom;
                         $a = RoomTipe::all();
-                        // dd($a->where('id','3')->first()->name);
-                        // $b = AppsRole::all();
-                        // dd($b);
                     @endphp
                     @foreach ($facilityroom as $item)
                         <tr>

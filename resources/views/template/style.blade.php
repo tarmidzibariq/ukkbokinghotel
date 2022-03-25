@@ -172,24 +172,24 @@ nav .button:hover {
     border-color: #CB968E !important;
 }
 
-#check input[type=date] {
+#check input[type=text] {
     color: #fb387e;
     transition: 0.5s;
 }
 
-#check input[type="date"]:before {
+#check input[type="text"]:before {
     color: #fb387e;
     content: attr(placeholder) !important;
     margin-right: 0.5em;
 }
 
-#check input[type="date"]:focus {
+#check input[type="text"]:focus {
     color: #fb387e;
     box-shadow: none;
     border-color: #CB968E !important;
 }
 
-#check input[type="date"]:hover {
+#check input[type="text"]:hover {
     border-color: #CB968E !important;
 }
 
@@ -694,24 +694,24 @@ header .content .card .choice button:hover {
     border-color: #CB968E !important;
 }
 
-#forminput input[type=date] {
+#forminput input[type=text] {
     color: #fb387e;
     transition: 0.5s;
 }
 
-#forminput input[type="date"]:before {
+#forminput input[type="text"]:before {
     color: #fb387e;
     content: attr(placeholder) !important;
     margin-right: 0.5em;
 }
 
-#forminput input[type="date"]:focus {
+#forminput input[type="text"]:focus {
     color: #fb387e;
     box-shadow: none;
     border-color: #CB968E !important;
 }
 
-#forminput input[type="date"]:hover {
+#forminput input[type="text"]:hover {
     border-color: #CB968E !important;
 }
 

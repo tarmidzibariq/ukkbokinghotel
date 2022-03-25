@@ -141,6 +141,7 @@
                                         </div>
                                     </div>
                                 </div>
+
                                 <form action="{{ route('buktireservasi',$roomtipe->id) }}" method="post">
                                     @csrf
                                     <input type="hidden" value="{{ $nama }}" name="nama">
@@ -155,7 +156,7 @@
                                     <input type="hidden" value="{{ $id_room_tipe }}" name="id_room_tipe">
                                     <input type="hidden" value="{{ $created_at }}" name="created_at">
                                     <div class="text-center" style="margin-top: 50px">
-                                        <button class="btn btn-primary text-white">Klik disini</button>
+                                        <button class="btn btn-primary text-white">Download Bukti Disini</button>
                                     </div>
                                 </form>
                             </div>

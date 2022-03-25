@@ -60,15 +60,11 @@
                                     <div class="row bg-white py-3 px-3 rounded-top shadow ">
                                         <div class="col-lg-3 col-4">
                                             <label for="">Check-in</label>
-                                            <input type="date"
-                                                class=" form-control rounded-0 border-1 border-white p-2 mt-1 bg-light"
-                                                value="{{ $tgl_masuk }}" name="tgl_masuk" >
+                                            <input type="text" class=" form-control rounded-0 border-1 border-white p-2 mt-1 bg-light"value="{{ $tgl_masuk ?? date('Y-m-d', strtotime('+3 days')) }}" id="datepicker" name="tgl_masuk" >
                                         </div>
                                         <div class="col-lg-3 col-4">
                                             <label for="">Check-out</label>
-                                            <input type="date"
-                                                class="form-control rounded-0 border-1 border-white p-2 mt-1 bg-light"
-                                                value="{{ $tgl_keluar ?? date('Y-m-d', strtotime('+1 days')) }}">
+                                            <input type="text" class="form-control rounded-0 border-1 border-white p-2 mt-1 bg-light" value="{{ $tgl_keluar ?? date('Y-m-d', strtotime('+4 days')) }}" id="dateenamhari" name="tgl_keluar">
                                         </div>
                                         <div class="col-lg-2 col-4">
                                             <label for="">Tamu</label>
@@ -232,10 +228,27 @@
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
     </script>
     {{-- select2 --}}
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    {{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> --}}
     {{-- @include('template.js') --}}
     {{-- <script src="../js/index.js"></script> --}}
 
+    {{-- datepicker --}}
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://momentjs.com/downloads/moment.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>
+    $( function() {
+        $( "#datepicker" ).datepicker({                  
+            minDate: moment().add('d', 3).toDate(),
+        });
+    } );
+    $( function() {
+        $( "#dateenamhari" ).datepicker({                  
+            minDate: moment().add('d', 4).toDate(),
+        });
+    } );
+    </script>
     <script>
         window.onscroll = function () {
             myFunction()

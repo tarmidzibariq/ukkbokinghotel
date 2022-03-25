@@ -102,6 +102,6 @@ class DashboardDefaultController extends Controller
         // return view('bukti-reservasi');
         // $data = RoomTipe::all();
         $pdf = PDF::loadView('bukti-reservasi', compact('nama', 'email', 'no_telp', 'nama_tamu', 'tamu', 'tgl_masuk', 'tgl_keluar', 'quantity', 'total', 'id_room_tipe', 'created_at', 'roomtipe', 'reservasi'))->setPaper('a4');
-        return $pdf->download('bukti-reservasi.pdf');
+        return $pdf->download('bukti-reservasi-rosehotels.pdf');
     }
 }

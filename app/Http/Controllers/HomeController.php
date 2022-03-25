@@ -29,7 +29,7 @@ class HomeController extends Controller
             return view('template-admin.dashboard');
         }else{
 
-            return view('home');
+            return view('template-admin.dashboard');
         }
     }
 }

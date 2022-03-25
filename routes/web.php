@@ -6,6 +6,7 @@ use App\Http\Controllers\FacilityHotelsController;
 use App\Http\Controllers\FacilityRoomController;
 use App\Http\Controllers\RoomTipeController;
 use App\Http\Controllers\DashboardDefaultController;
+use App\Http\Controllers\ReservationController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -91,4 +92,7 @@ Route::group(['prefix' => 'facility-room', 'as' => 'facility-room.', 'middleware
     Route::get('/edit/{id}', [FacilityRoomController::class, 'edit'])->name('edit');
     Route::post('/update/{id}', [FacilityRoomController::class, 'update'])->name('update');
     Route::post('/destroy/{id}', [FacilityRoomController::class, 'destroy'])->name('destroy');
+});
+Route::group(['prefix' => 'reservasi', 'as' => 'reservasi.', 'middleware' => 'checkRole:Resepsionis'], function () {
+    Route::get('/', [ReservationController::class, 'index'])->name('index');
 });
