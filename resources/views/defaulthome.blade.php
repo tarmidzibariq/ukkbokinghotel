@@ -400,45 +400,19 @@
 
     {{-- datepicker --}}
     <script>
-        var awal= document.getElementById('tgl_awal');
+        // var awal= document.getElementById('tgl_awal');
     $( function() {
         $( "#tgl_awal" ).datepicker({                  
             minDate: moment().add('d', 3).toDate(),
+            dateFormat: 'yy-mm-dd',
         });
         $( "#tgl_akhir" ).datepicker({                  
             minDate: moment().add('d', 4).toDate(),
+            dateFormat: 'yy-mm-dd',
         });
     } );
-    $( function() {
-    } );
-    // var $start = $('#tgl_awal'),
-    // $end = $('#end');
 
-    // $start.datepicker({
-    //     onSelect: function (fd, date) {
-    //         $end.data('datepicker')
-    //                 .update('minDate', date);
-
-    //         $end.focus();
-    //     }
-    // })
-
-    // $end.datepicker({
-    //     onSelect: function (fd, date) {
-    //         $start.data('datepicker')
-    //                 .update('maxDate', date)
-    //     }
-    // })
-
-        
     </script>
-    {{-- <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-    <script>
-        $('#select').select2({
-            placeholder: "Chose One",
-            allowClear: true
-        });
-    </script> --}}
     @include('template.js')
     {{-- <script src="../js/index.js"></script> --}}
 </body>

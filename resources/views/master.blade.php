@@ -104,6 +104,7 @@
 
      <!-- Page level custom scripts -->
     <script src="{{ asset('temmplate-admin/js/demo/datatables-demo.js') }}"></script>
+    
 
     @include('template-admin.js')
     {{-- <script src="{{ asset('template-admin/js/demo/datatables-demo.js') }}"></script> --}}

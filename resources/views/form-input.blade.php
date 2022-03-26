@@ -241,11 +241,13 @@
     $( function() {
         $( "#datepicker" ).datepicker({                  
             minDate: moment().add('d', 3).toDate(),
+            dateFormat: 'yy-mm-dd',
         });
     } );
     $( function() {
         $( "#dateenamhari" ).datepicker({                  
             minDate: moment().add('d', 4).toDate(),
+            dateFormat: 'yy-mm-dd',
         });
     } );
     </script>
