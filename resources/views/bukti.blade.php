@@ -173,23 +173,18 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-12 col-md-6">
-                    <h6>About</h6>
-                    <p class="text-justify">Scanfcode.com <i>CODE WANTS TO BE SIMPLE </i> is an initiative to help the
-                        upcoming programmers with the code. Scanfcode focuses on providing the most efficient code or
-                        snippets as the code wants to be simple. We will help programmers build up concepts in different
-                        programming languages that include C, C++, Java, HTML, CSS, Bootstrap, JavaScript, PHP, Android,
-                        SQL and Algorithm.</p>
+                    <h6>Rose Hotels</h6>
+                    <p class="text-justify">Offering an outdoor swimming pool and spa centre, Aston Sentul Lake Resort & Conference Center is located in Bogor, West Java. Guests can enjoy an la carte menu at the hotel's restaurant. Free Wi-Fi access and free parking are available at the property. The rooms have a flat-screen TV with cable channels, a safe and a minibar fridge. All rooms have a seating area and a private bathroom with a shower, hairdryer, slippers and free toiletries. The front desk operates 24 hours. Airport shuttle is available at a surcharge.</p>
                 </div>
 
                 <div class="col-xs-6 col-md-3">
-                    <h6>Categories</h6>
+                    <h6>Privilege</h6>
                     <ul class="footer-links">
-                        <li><a href="http://scanfcode.com/category/c-language/">C</a></li>
-                        <li><a href="http://scanfcode.com/category/front-end-development/">UI Design</a></li>
-                        <li><a href="http://scanfcode.com/category/back-end-development/">PHP</a></li>
-                        <li><a href="http://scanfcode.com/category/java-programming-language/">Java</a></li>
-                        <li><a href="http://scanfcode.com/category/android/">Android</a></li>
-                        <li><a href="http://scanfcode.com/category/templates/">Templates</a></li>
+                        <li><a href="http://scanfcode.com/category/front-end-development/">Unbeatable prices!/a></li>
+                        <li><a href="http://scanfcode.com/category/c-language/">Staff speak Indonesian & English</a></li>
+                        <li><a href="http://scanfcode.com/category/back-end-development/">Safe order</a></li>
+                        <li><a href="http://scanfcode.com/category/java-programming-language/">Great location and facilities for couples</a></li>
+                        <li><a href="http://scanfcode.com/category/android/">Manage your bookings online</a></li>
                     </ul>
                 </div>
 
@@ -216,10 +211,10 @@
 
                 <div class="col-md-4 col-sm-6 col-xs-12">
                     <ul class="social-icons">
-                        <li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
-                        <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
-                        <li><a class="dribbble" href="#"><i class="fa fa-dribbble"></i></a></li>
-                        <li><a class="linkedin" href="#"><i class="fa fa-linkedin"></i></a></li>
+                        <li><a class="facebook" href="#"><i class="fa-brands fa-facebook"></i></a></li>
+                        <li><a class="twitter" href="#"><i class="fa-brands fa-twitter"></i></a></li>
+                        <li><a class="dribbble" href="#"><i class="fa-brands fa-instagram"></i></a></li>
+                        <li><a class="linkedin" href="#"><i class="fa-brands fa-youtube"></i></a></li>
                     </ul>
                 </div>
             </div>

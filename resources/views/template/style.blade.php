@@ -510,7 +510,7 @@ nav .button:hover {
 }
 
 .social-icons a.linkedin:hover {
-    background-color: #007bb6
+    background-color: #c00
 }
 
 .social-icons a.dribbble:hover {

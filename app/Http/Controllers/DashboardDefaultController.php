@@ -31,7 +31,6 @@ class DashboardDefaultController extends Controller
         $tgl_masuk = $request->tgl_masuk;
         $tgl_keluar = $request->tgl_keluar;
         $tamu = $request->tamu;
-
         $roomtipe= RoomTipe::orderBy('id', 'DESC')->get();
         $facilityroom = FacilityRoom::all();
         return view('form-input', compact('tgl_masuk','tgl_keluar','tamu','roomtipe', 'facilityroom'));
@@ -44,9 +43,12 @@ class DashboardDefaultController extends Controller
         $tgl_keluar = $request->tgl_keluar;
         $tamu = $request->tamu;
         $quantity = $request->quantity;
+        $idroom = $request->idroom;
+
         $roomtipe = RoomTipe::find($id);
+        $room = Room::where('status', 1)->orderBy('created_at', 'DESC')->get();
         // dd($roomtipe);
-        return view('form-reservasi', compact('tgl_masuk', 'tgl_keluar', 'tamu','quantity','roomtipe'));
+        return view('form-reservasi', compact('tgl_masuk', 'tgl_keluar', 'tamu','roomtipe','room','quantity','idroom'));
 
     }
 

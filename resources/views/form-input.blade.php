@@ -73,7 +73,7 @@
                                                 name="tamu"value="{{ $tamu}}">
                                         </div>
                                         <div class="col-lg-4 col-12 mt-1">
-                                            <button class="button text-center w-100 text-white mt-4">
+                                            <button class="button text-center w-100 text-white mt-4 py-lg-2">
                                                 CHECK
                                             </button>
                                         </div>
@@ -128,7 +128,7 @@
                                                 <form action="{{ route('storeup',$item->id) }}" method="post">
                                                 @csrf
                                                     <div class="d-flex justify-content-lg-end">
-                                                        <div class="col-6 col-lg-3 me-3">
+                                                        {{-- <div class="col-6 col-lg-3 me-3">
                                                             <div class="d-flex justify-content-between inputgrup">
                                                                 <input type="button" value="-" class="button-minus btn btn-danger"
                                                                     data-field="quantity">
@@ -137,7 +137,7 @@
                                                                 <input type="button" value="+" class="button-plus btn btn-success"
                                                                     data-field="quantity">
                                                             </div>
-                                                        </div>
+                                                        </div> --}}
                                                         <input type="hidden" value="{{ $tgl_masuk }}" name="tgl_masuk">
                                                         <input type="hidden" value="{{ $tgl_keluar }}" name="tgl_keluar">
                                                         <input type="hidden" value="{{ $tamu }}" name="tamu">
@@ -166,23 +166,18 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-12 col-md-6">
-                    <h6>About</h6>
-                    <p class="text-justify">Scanfcode.com <i>CODE WANTS TO BE SIMPLE </i> is an initiative to help the
-                        upcoming programmers with the code. Scanfcode focuses on providing the most efficient code or
-                        snippets as the code wants to be simple. We will help programmers build up concepts in different
-                        programming languages that include C, C++, Java, HTML, CSS, Bootstrap, JavaScript, PHP, Android,
-                        SQL and Algorithm.</p>
+                    <h6>Rose Hotels</h6>
+                    <p class="text-justify">Offering an outdoor swimming pool and spa centre, Aston Sentul Lake Resort & Conference Center is located in Bogor, West Java. Guests can enjoy an la carte menu at the hotel's restaurant. Free Wi-Fi access and free parking are available at the property. The rooms have a flat-screen TV with cable channels, a safe and a minibar fridge. All rooms have a seating area and a private bathroom with a shower, hairdryer, slippers and free toiletries. The front desk operates 24 hours. Airport shuttle is available at a surcharge.</p>
                 </div>
 
                 <div class="col-xs-6 col-md-3">
-                    <h6>Categories</h6>
+                    <h6>Privilege</h6>
                     <ul class="footer-links">
-                        <li><a href="http://scanfcode.com/category/c-language/">C</a></li>
-                        <li><a href="http://scanfcode.com/category/front-end-development/">UI Design</a></li>
-                        <li><a href="http://scanfcode.com/category/back-end-development/">PHP</a></li>
-                        <li><a href="http://scanfcode.com/category/java-programming-language/">Java</a></li>
-                        <li><a href="http://scanfcode.com/category/android/">Android</a></li>
-                        <li><a href="http://scanfcode.com/category/templates/">Templates</a></li>
+                        <li><a href="http://scanfcode.com/category/front-end-development/">Unbeatable prices!/a></li>
+                        <li><a href="http://scanfcode.com/category/c-language/">Staff speak Indonesian & English</a></li>
+                        <li><a href="http://scanfcode.com/category/back-end-development/">Safe order</a></li>
+                        <li><a href="http://scanfcode.com/category/java-programming-language/">Great location and facilities for couples</a></li>
+                        <li><a href="http://scanfcode.com/category/android/">Manage your bookings online</a></li>
                     </ul>
                 </div>
 
