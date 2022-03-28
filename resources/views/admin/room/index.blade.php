@@ -85,11 +85,12 @@
                             @endif
                         </td>
                         <td>
+                            @if ($item->status == '0')
                             <div class="row justify-content-center">
                                 {{-- <div class="col-2 ">
                                     <a href=""><i class="fas fa-eye " style="color: #12f325"></i></a>
                                 </div> --}}
-                                <div class="col-2  ">
+                                <div class="col-2 ">
                                     <a href=""data-toggle="modal" data-target="#edit{{$item->id}}"><i class="fas fa-edit " style="color: #f39c12"></i></a>
                                     <div class="modal fade" id="edit{{$item->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-centered" role="document">
@@ -100,7 +101,7 @@
                                                         <span aria-hidden="true">×</span>
                                                     </button>
                                                 </div>
-                                                <form action=""method="post">
+                                                <form action="{{ route('room.update',$item->id) }}"method="post">
                                                 @csrf
                                                 <div class="modal-body">
                                                         <div class="row">
@@ -155,6 +156,7 @@
                                     </div>
                                 </div>
                             </div>  
+                            @endif
                         </td>
                     </tr>
                     @endforeach

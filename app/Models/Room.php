@@ -33,4 +33,8 @@ class Room extends Model
     {
         return $this->belongsTo('App\Models\Roomtipe', 'id_room_tipe', 'id');
     }
+    public function OrderRoom()
+    {
+        return $this->hasMany('App\Models\OrderRoom');
+    }
 }

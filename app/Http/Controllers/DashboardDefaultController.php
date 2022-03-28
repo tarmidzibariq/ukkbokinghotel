@@ -64,6 +64,7 @@ class DashboardDefaultController extends Controller
             'quantity'=> $request->quantity,
             'total'=> $request->total,
             'id_room_tipe'=> $request->id_room_tipe,
+            'status'=> $request->status,
         ]);
         $nama= $request->nama;
         $email= $request->email;

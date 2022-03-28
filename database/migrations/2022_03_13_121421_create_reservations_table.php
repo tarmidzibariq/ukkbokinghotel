@@ -24,7 +24,7 @@ class CreateReservationsTable extends Migration
             $table->string('tgl_keluar');//date
             $table->integer('quantity'); // jumlah kamar
             $table->integer('total');
-            $table->string('status')->nullable();
+            $table->string('status')->nullable(); // 0 = cancel, 1 = booking, 2 = cek-in, 3 = cek-out
             $table->integer('id_room')->nullable();
             $table->integer('id_room_tipe')->nullable();
             $table->timestamps();

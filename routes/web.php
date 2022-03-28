@@ -7,6 +7,7 @@ use App\Http\Controllers\FacilityRoomController;
 use App\Http\Controllers\RoomTipeController;
 use App\Http\Controllers\DashboardDefaultController;
 use App\Http\Controllers\ReservationController;
+use App\Http\Controllers\LaporanController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -95,5 +96,10 @@ Route::group(['prefix' => 'facility-room', 'as' => 'facility-room.', 'middleware
 });
 Route::group(['prefix' => 'reservasi', 'as' => 'reservasi.', 'middleware' => 'checkRole:Resepsionis'], function () {
     Route::get('/', [ReservationController::class, 'index'])->name('index');
+    Route::get('/edit/{id}', [ReservationController::class, 'edit'])->name('edit');
+    Route::post('/update/{id}', [ReservationController::class, 'update'])->name('update');
     // Route::post('/filter', [ReservationController::class, 'filter'])->name('filter');
 });
+// Route::group(['prefix' => 'laporan', 'as' => 'laporan.', 'middleware' => 'checkRole:Resepsionis'], function () {
+//     Route::get('/', [LaporanController::class, 'index'])->name('index');
+// });

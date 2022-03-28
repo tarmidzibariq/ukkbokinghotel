@@ -156,6 +156,7 @@
                                                         <input type="hidden" value="{{ $tamu }}" name="tamu">
                                                         <input type="hidden" value="{{ $total }}" name="total">
                                                         <input type="hidden" value="{{ date('Y-m-d') }}" name="created_at">
+                                                        <input type="hidden" value="1" name="status">
                                                     </div>
                                                 </div>
                                             </div>

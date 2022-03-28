@@ -18,6 +18,7 @@ class Reservation extends Model
         'tgl_keluar',
         'quantity',
         'total',
+        'status',
         'id_room',
         'id_room_tipe',
 
@@ -27,5 +28,9 @@ class Reservation extends Model
     public function rooms()
     {
         return $this->belongsTo('App\Models\Room', 'id_room', 'id');
+    }
+    public function OrderRoom()
+    {
+        return $this->hasMany('App\Models\OrderRoom');
     }
 }

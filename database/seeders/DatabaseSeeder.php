@@ -200,6 +200,20 @@ class DatabaseSeeder extends Seeder
             'quantity' => '2',
             'total' => '800000',
             'id_room_tipe' => '3',
+            'status' => '1',
+        ]);
+        DB::table('reservations')->insert([
+            'nama' => 'tarmidzi bariq',
+            'email' => 'tarmidz@gmail.com',
+            'no_telp' => '081220745317',
+            'nama_tamu' => 'endri',
+            'tamu' => '2',
+            'tgl_masuk' => '2022-03-30',
+            'tgl_keluar' => '2022-03-31',
+            'quantity' => '1',
+            'total' => '500000',
+            'id_room_tipe' => '1',
+            'status' => '1',
         ]);
     }
 }

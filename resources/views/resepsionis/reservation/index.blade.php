@@ -5,7 +5,12 @@
     {{-- <a href="" class="btn btn-sm btn-primary shadow-sm"><i
             class="fas fa-folder-plus fa-sm text-white-50"></i>&nbsp; Add Data</a> --}}
 </div>
-
+@php
+    use App\Models\RoomTipe;
+    $a = RoomTipe::all();
+    
+    // dd($selectroom);
+@endphp
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
     <div class="card-header py-3">
@@ -14,8 +19,11 @@
     <div class="card-body">
         <form action="{{ route('reservasi.index') }}" method="get">
             @csrf
-            <div class="row mb-3 mt-2">
-                <div class="col-5 col-lg-5">
+            <div class="row mb-3 ">
+                <div class="col-12">
+                    <input type="date" class="form-control" name="tgl" id="date" data-date-format="d-m-Y" value="{{ $tgl ?? '' }}" >
+                </div>
+                <div class="col-4 col-lg-3 mt-2">
                     <div class="card p-1">
                         <select name="nama_tamu" class="form-control" id="select2">
                             <option value="{{  $nama ?? '' }}">{{  $nama ?? ''}}</option>
@@ -25,17 +33,44 @@
                         </select>
                     </div>
                 </div>
-                <div class="col-5 col-lg-5">
-                    <input type="date" class="form-control" name="tgl" id="date" data-date-format="d-m-Y" value="{{ $tgl ?? '' }}" >
+                <div class="col-4 col-lg-3 mt-2">
+                    <div class="card p-1">
+                        <select name="id_room_tipe" class="form-control" id="select3">
+                            <option value="{{  $id_room_tipe ?? '' }}">{{  $a->where('id',$id_room_tipe)->first()->nama ?? ''}}</option>
+                            @foreach ($roomtipe as $key)
+                                <option value="{{ $key->id }}">{{ $key->nama }}</option>
+                            @endforeach
+                        </select>
+                    </div>
                 </div>
-                <div class="col-2">
+                <div class="col-4 col-lg-3 mt-2">
+                    <div class="card p-1">
+                        @php
+                            $caristatus = array (
+                                        array(0,'Cancel'),
+                                        array(1,'Booking'),
+                                        array(2,'Cek-in'),
+                                        array(3,'Cek-out'),
+                                        );
+                            // dd($caristatus[0][1]);
+                        @endphp
+                        <select name="status" class="form-control" id="select4">
+                            <option value="">Pilih satu</option>
+                            <option value="0" {{ (old('status') ?? $status) == '0' ? 'selected' : '' }}>Cancel</option>
+                            <option value="1" {{ (old('status') ?? $status) == '1' ? 'selected' : '' }}>Booking</option>
+                            <option value="2" {{ (old('status') ?? $status) == '2' ? 'selected' : '' }}>Cek-in</option>
+                            <option value="3" {{ (old('status') ?? $status) == '3' ? 'selected' : '' }}>Cek-out</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-12 col-lg-3 mt-2">
                     <button class="btn btn-success  w-100"><i class="fas fa-filter"></i></button>
                 </div>
             </div>
         </form>
         <div class="row mb-3">
             <div class="col-4 col-lg-2">
-                <button class="btn btn-primary w-100" id="export"><i class="fas fa-print"></i> Cetak</button>
+                <button class="btn btn-primary w-100" id="export"><i class="fas fa-file-excel"></i> Cetak</button>
             </div>
         </div>
         <div class="table-responsive">
@@ -48,21 +83,45 @@
                         <th>Cek-in</th>
                         <th>Cek-out</th>
                         <th>Tipe Kamar</th>
+                        <th>Status</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @php
-                        use App\Models\RoomTipe;
-                        $a = RoomTipe::all();
-                    @endphp
                     @foreach ($reservation as $item)
+
                         <tr style="font-size: 12px;">
                             <td>{{ $loop->iteration }}</td>
                             <td class="text-capitalize">{{ Carbon\Carbon::parse($item->created_at)->isoFormat("ddd, D MMMM Y") }}</td>
                             <td class="text-capitalize">{{ $item->nama_tamu }}</td>
                             <td>{{ Carbon\Carbon::parse($item->tgl_masuk)->isoFormat("ddd, D MMMM Y") }}</td>
                             <td>{{ Carbon\Carbon::parse($item->tgl_keluar)->isoFormat("ddd, D MMMM Y") }}</td>
-                            <td>{{ $item->quantity.'x '.$a->where('id',$item->id_room_tipe)->first()->nama }}</td>
+                            <td>{{ $item->quantity.'x '.$a->where('id',$item->id_room_tipe)->first()->nama  }}</td>
+                            <td> 
+                                @if ($item->status == '0')
+                                    <button class="btn btn-danger btn-icon-split btn-sm mt-2 mt-md-0" type="submit">
+                                        <span class="text">Cancel</span>
+                                    </button>
+                                @endif
+                                @if ($item->status == '1')
+                                    <button class="btn btn-warning btn-icon-split btn-sm mt-2 mt-md-0" type="submit">
+                                        <span class="text">Boking</span>
+                                    </button>
+                                @endif
+                                @if ($item->status == '2')
+                                    <button class="btn btn-info btn-icon-split btn-sm mt-2 mt-md-0" type="submit">
+                                        <span class="text">Cek-in</span>
+                                    </button>
+                                @endif
+                                @if ($item->status == '3')
+                                    <button class="btn btn-success btn-icon-split btn-sm mt-2 mt-md-0" type="submit">
+                                        <span class="text">Cek-out</span>
+                                    </button>
+                                @endif
+                            </td>
+                            <td>
+                                <a href="{{ route('reservasi.edit',$item->id) }}"><i class="fas fa-edit " style="color: #f39c12"></i></a>
+                            </td>
                         </tr>
                     @endforeach
                 </tbody>
@@ -78,6 +137,14 @@
 <script>
     $('#select2').select2({
         placeholder: "nama tamu",
+        allowClear: true
+    });
+    $('#select3').select2({
+        placeholder: "tipe kamar",
+        allowClear: true
+    });
+    $('#select4').select2({
+        placeholder: "status",
         allowClear: true
     });
 </script>

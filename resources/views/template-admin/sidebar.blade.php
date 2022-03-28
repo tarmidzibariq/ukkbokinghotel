@@ -79,20 +79,20 @@
 
     @php
         $reservation = ['reservasi.index'];
+        $laporan = ['laporan.index'];
     @endphp
     <li class="nav-item {{ Request::routeIs($reservation) ? 'active' : ''}}">
         <a class="nav-link" href="{{ route('reservasi.index') }}">
             <i class="fas fa-shopping-cart"></i>
             <span>Reservasi</span>
         </a>
-        {{-- <div id="collapseUtilities" class="collapse " aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header ">Entri Boking</h6>
-                <a class="collapse-item " href="">Facility Hotels</a>
-                <a class="collapse-item {{ Request::routeIs($farooms) ? 'active' : ''}}" href="{{ route('facility-room.index') }}">Facility Rooms</a>
-            </div>
-        </div> --}}
     </li>
+    {{-- <li class="nav-item {{ Request::routeIs($laporan) ? 'active' : ''}}">
+        <a class="nav-link" href="{{ route('laporan.index') }}">
+            <i class="fas fa-file"></i>
+            <span>Laporan</span>
+        </a>
+    </li> --}}
     @endif
     @endif
 
