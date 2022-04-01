@@ -18,11 +18,13 @@ class FacilityRoomController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        $id_room_tipe = $request->id_room_tipe;
         $facilityroom = FacilityRoom::orderBy('created_at', 'DESC')->get();
         $roomtipe = RoomTipe::orderBy('created_at', 'DESC')->get();
-        return view('admin.fasilitas-room.index',compact('facilityroom','roomtipe'));
+        $facilityroom = FacilityRoom::where('id_room_tipe', 'LIKE', '%' . $id_room_tipe . '%')->orderBy('id', 'DESC')->get();
+        return view('admin.fasilitas-room.index',compact('facilityroom','roomtipe','id_room_tipe'));
     }
 
     /**

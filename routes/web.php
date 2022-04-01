@@ -96,8 +96,11 @@ Route::group(['prefix' => 'facility-room', 'as' => 'facility-room.', 'middleware
 });
 Route::group(['prefix' => 'reservasi', 'as' => 'reservasi.', 'middleware' => 'checkRole:Resepsionis'], function () {
     Route::get('/', [ReservationController::class, 'index'])->name('index');
-    Route::get('/edit/{id}', [ReservationController::class, 'edit'])->name('edit');
-    Route::post('/update/{id}', [ReservationController::class, 'update'])->name('update');
+    Route::post('/updatebooking/{id}', [ReservationController::class, 'updatebooking'])->name('updatebooking');
+    Route::post('/updatecekin/{id}', [ReservationController::class, 'updatecekin'])->name('updatecekin');
+    Route::post('/updatecekout/{id}', [ReservationController::class, 'updatecekout'])->name('updatecekout');
+    // Route::get('/edit/{id}', [ReservationController::class, 'edit'])->name('edit');
+    // Route::post('/update/{id}', [ReservationController::class, 'update'])->name('update');
     // Route::post('/filter', [ReservationController::class, 'filter'])->name('filter');
 });
 // Route::group(['prefix' => 'laporan', 'as' => 'laporan.', 'middleware' => 'checkRole:Resepsionis'], function () {

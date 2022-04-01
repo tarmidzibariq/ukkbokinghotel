@@ -44,6 +44,7 @@ class DashboardDefaultController extends Controller
         $tamu = $request->tamu;
         $quantity = $request->quantity;
         $idroom = $request->idroom;
+        
 
         $roomtipe = RoomTipe::find($id);
         $room = Room::where('status', 1)->orderBy('created_at', 'DESC')->get();
@@ -67,6 +68,11 @@ class DashboardDefaultController extends Controller
             'total'=> $request->total,
             'id_room_tipe'=> $request->id_room_tipe,
             'status'=> $request->status,
+        ]);
+        $triger = $request->stock - $request->quantity;
+        // dd($triger);
+        $update = RoomTipe::find($request->id_room_tipe)->update([
+            'stock' => $triger,
         ]);
         $nama= $request->nama;
         $email= $request->email;

@@ -37,6 +37,34 @@ class ReservationController extends Controller
         $orderroom=OrderRoom::all();
         return view('resepsionis.reservation.edit',compact('reservation','selectroom', 'orderroom'));
     }
+    public function updatebooking(Request $request, $id)
+    {
+        $update = Reservation::find($id)->update([
+            'status' => 2,
+        ]);
+        return redirect()->route('reservasi.index');
+    }
+    public function updatecekin(Request $request, $id)
+    {
+        $update = Reservation::find($id)->update([
+            'status' => 3,
+        ]);
+        return redirect()->route('reservasi.index');
+    }
+    public function updatecekout(Request $request, $id)
+    {
+        $update = Reservation::find($id)->update([
+            'status' => 0,
+        ]);
+        $id_room_tipe = $request->id_room_tipe;
+        $triger = $request->stock + $request->quantity;
+        // $roomstock = RoomTipe::where('id',$id_room_tipe)->where('stock')->get();
+        // dd($roomstock);
+        $update = RoomTipe::find($id_room_tipe)->update([
+            'stock'=> $triger ,
+        ]);
+        return redirect()->route('reservasi.index');
+    }
     // public function update(Request $request, $id)
     // {
     //     $room1 = $request->id_room1;

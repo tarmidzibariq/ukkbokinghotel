@@ -12,6 +12,25 @@
         <h6 class="m-0 font-weight-bold text-primary">Fasility Rooms Data</h6>
     </div>
     <div class="card-body">
+        <form action="{{ route('facility-room.index') }}" method="get">
+            @csrf
+            <div class="row mb-3">
+                <div class="col-9">
+                    <div class="card p-1">
+                        <select name="id_room_tipe" class="form-control" id="select2">
+                            <option value="{{  $id_room_tipe ?? '' }}">{{  $roomtipe->where('id',$id_room_tipe)->first()->nama ?? ''}}</option>
+                            {{-- <option value=""></option> --}}
+                            @foreach ($roomtipe as $item)
+                                <option value="{{ $item->id }}">{{ $item->nama }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <button class="btn btn-success  w-100"><i class="fas fa-filter"></i></button>
+                </div>
+            </div>
+        </form>
         <div class="table-responsive">
             <table class="table table-bordered" style="font-size:14px;" id="fasilityroom" width="100%" cellspacing="0">
                 <thead>
@@ -59,17 +78,25 @@
                                                     @csrf
                                                         <button type="submit" class="btn btn-danger">Delete</button>
                                                     </form>
-                                                </div>
+                                                </  iv>
                                             </div>
                                         </div>
                                     </div>
                                 </div>  
                             </td>
-                        </tr>
+                        </tr>   c
                     @endforeach
                 </tbody>
-            </table>
+            </table> 
         </div>
     </div>
 </div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<script>
+    $('#select2').select2({
+        placeholder: "Chose Tipe Rooms",
+        allowClear: true
+    });
+</script>
 @endsection

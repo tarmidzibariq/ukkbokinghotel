@@ -76,13 +76,13 @@
                                         <p class="">Enter your credentials to login.</p>
                                     </div>
                                     <div class="form-login mt-4">
-                                        <input type="text" class="form-control p-2 @error('email') is-invalid @enderror" name="name" value="{{ old('email') }}" required autocomplete="email" placeholder="Username" >
-                                        @error('email')
+                                        <input type="text" class="form-control p-2 @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" placeholder="Username" >
+                                        @error('name')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
                                         @enderror
-                                        <input type="password" class="form-control mt-3 p-2 @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" placeholder="Password">
+                                        <input type="password" class="form-control mt-3 p-2 @error('password') is-invalid @enderror" name="password" required autocomplete="password" placeholder="Password">
                                          @error('password')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -107,7 +107,7 @@
                                     <div class="row choice mt-5">
                                         <div class="d-flex align-items-center">
                                             <div class="col-6">
-                                                <a href="{{ route('register') }}">Belum punya akun?</a>
+                                                {{-- <a href="{{ route('register') }}">Belum punya akun?</a> --}}
                                             </div>
                                             <div class="ms-auto">
                                                 <div class="col-6 ">

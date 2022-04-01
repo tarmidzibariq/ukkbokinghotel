@@ -129,11 +129,19 @@
                                                                 <div style="background-image: url({{ asset('storage/rooms/'.$roomtipe->gambar) }}); " class="gambar"></div>
                                                             </div>
                                                             <div class="col-8">
-                                                                <h5 style="font-size: 16px; color:#4a4a4a; font-weight:500;" class="mb-1 text-capitalize">{{ $quantity.'X '.$roomtipe->nama }} </h5>
+                                                                <h5 style="font-size: 16px; color:#4a4a4a; font-weight:500;" class="mb-1 text-capitalize">{{ $roomtipe->nama }} </h5>
                                                                 <p style="font-size: 12px; color: #8a93a7;" class="m-0">{{ $tamu.' Tamu' }}</p>
                                                             </div>
                                                         </div>
                                                         <div class="d-flex justify-content-between align-items-center mt-4" style="color: #8a93a7; font-size:14px;" >
+                                                            <p class="m-0">Jumlah Kamar</p>
+                                                            <p class="m-0">{{ $quantity.' Kamar' }}</p>
+                                                        </div>
+                                                        <div class="d-flex justify-content-between align-items-center mt-2" style="color: #8a93a7; font-size:14px;" >
+                                                            <p class="m-0">Harga Kamar</p>
+                                                            <p class="m-0">{{ 'IDR '. number_format($roomtipe->harga) }}</p>
+                                                        </div>
+                                                        <div class="d-flex justify-content-between align-items-center mt-2" style="color: #8a93a7; font-size:14px;" >
                                                             <p class="m-0">Check-in</p>
                                                             <p class="m-0">{{ Carbon\Carbon::parse($tgl_masuk)->isoFormat("ddd, D MMMM Y") }}</p>
                                                         </div>
@@ -150,6 +158,7 @@
                                                             <p class="mt-3 mb-0 text-primary">IDR {{ number_format($total) }}</p>
                                                         </div>
                                                         <input type="hidden" value="{{ $tgl_masuk }}" name="tgl_masuk">
+                                                        <input type="text" value="{{ $roomtipe->stock }}" name="stock">
                                                         <input type="hidden" value="{{ $tgl_keluar }}" name="tgl_keluar">
                                                         <input type="hidden" value="{{ $roomtipe->id }}" name="id_room_tipe">
                                                         <input type="hidden" value="{{ $quantity }}" name="quantity">

@@ -107,7 +107,13 @@
                                                     <h4 class="mb-1 text-capitalize">{{ $item->nama }}</h4>
                                                     <p class=" mb-1 " style="font-size: 14px; color: #8f8f8f;">{{'*Tersedia '.$item->stock  }}</p>
                                                 </div>
-                                                <p class="mb-3 text-danger text-end text-capitalize">{{ $item->deskripsi }}</p>
+                                                <div>
+                                                    <p class="m-0 text-danger text-end text-capitalize">{{ $item->deskripsi }}</p>
+                                                    <h6 class="m-0 mt-1 text-end" style="color: #212529;">{{ 'IDR. '.number_format($item->harga) }}</h6>
+
+                                                </div>
+                                                {{-- <div class="d-flex justify-content-end">
+                                                </div> --}}
                                             </div>
                                             <div class="row mt-3">
                                                 @php
@@ -124,11 +130,12 @@
                                                     <p>- Wifi</p>
                                                 </div> --}}
                                             </div>
-                                            <div class="row mt-4">
+                                            
+                                            <div class="row mt-2">
                                                 <form action="{{ route('storeup',$item->id) }}" method="post">
                                                 @csrf
                                                     <div class="d-flex justify-content-lg-end">
-                                                        {{-- <div class="col-6 col-lg-3 me-3">
+                                                        <div class="col-6 col-lg-3 me-3">
                                                             <div class="d-flex justify-content-between inputgrup">
                                                                 <input type="button" value="-" class="button-minus btn btn-danger"
                                                                     data-field="quantity">
@@ -137,13 +144,13 @@
                                                                 <input type="button" value="+" class="button-plus btn btn-success"
                                                                     data-field="quantity">
                                                             </div>
-                                                        </div> --}}
+                                                        </div>
                                                         <input type="hidden" value="{{ $tgl_masuk }}" name="tgl_masuk">
                                                         <input type="hidden" value="{{ $tgl_keluar }}" name="tgl_keluar">
                                                         <input type="hidden" value="{{ $tamu }}" name="tamu">
                                                         <div class="col-6 col-lg-3">
                                                             <button class="btn btn-primary text-center w-100 text-white "
-                                                                type="submit">{{ 'Rp '.number_format($item->harga) }}</button>
+                                                                type="submit">Submit</button>
                                                         </div>
                                                     </div>
                                                 </form>
