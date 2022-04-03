@@ -120,6 +120,10 @@
                                                     $a = $facilityroom->where('id_room_tipe',$item->id);
                                                     // dd($a);
                                                 @endphp
+                                                <div class="col-6">
+                                                    
+                                                <p class="text-capitalize m-0"><i class="fas fa-bed"></i>&nbsp;  {{ $item->kapasitas}}</p>
+                                                </div>
                                                 @foreach ($a as $key)
                                                 <div class="col-6">
                                                     <p class="text-capitalize m-0"><i class="fa-solid fa-check"></i>  {{ $key->nama_barang }}</p>

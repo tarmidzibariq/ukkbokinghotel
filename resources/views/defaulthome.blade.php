@@ -91,7 +91,7 @@
                             </div>
                         </div> --}}
                         
-                        <form action="{{ route('store') }}" method="post">
+                          <form action="{{ route('store') }}" method="post">
                             @csrf
                             <div class="row">
                                 <div class="col-lg-3 col-3">

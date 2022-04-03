@@ -158,7 +158,7 @@
                                                             <p class="mt-3 mb-0 text-primary">IDR {{ number_format($total) }}</p>
                                                         </div>
                                                         <input type="hidden" value="{{ $tgl_masuk }}" name="tgl_masuk">
-                                                        <input type="text" value="{{ $roomtipe->stock }}" name="stock">
+                                                        <input type="hidden" value="{{ $roomtipe->stock }}" name="stock">
                                                         <input type="hidden" value="{{ $tgl_keluar }}" name="tgl_keluar">
                                                         <input type="hidden" value="{{ $roomtipe->id }}" name="id_room_tipe">
                                                         <input type="hidden" value="{{ $quantity }}" name="quantity">

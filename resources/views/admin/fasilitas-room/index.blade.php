@@ -51,7 +51,7 @@
                     @foreach ($facilityroom as $item)
                         <tr>
                             <td>{{ $loop->iteration }}</td>
-                            <td>{{ $a->where('id',$item->id_room_tipe)->first()->nama }}</td>
+                            <td>{{ $a->where('id',$item->id_room_tipe)->first()->nama ?? ''}}</td>
                             <td>{{ $item->nama_barang }}</td>
                             <td>{{ Carbon\Carbon::parse($item->created_at)->isoFormat("D MMMM Y") }}</td>
                             <td>
@@ -78,13 +78,13 @@
                                                     @csrf
                                                         <button type="submit" class="btn btn-danger">Delete</button>
                                                     </form>
-                                                </  iv>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>  
                             </td>
-                        </tr>   c
+                        </tr>   
                     @endforeach
                 </tbody>
             </table> 
