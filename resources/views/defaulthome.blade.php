@@ -134,7 +134,7 @@
             </div>
             <div class="row text-center">
                 @foreach ($facilityhotel as $item)
-                    <div class="col-lg-6 mt-lg-0 mt-3 ">
+                    <div class="col-lg-6 mt-3 ">
                         <div class="content ms-lg-5">
                             <img src="{{ asset('storage/facilityhotel/'.$item->gambar) }}" alt="" class="">
                             <div class="overlay">

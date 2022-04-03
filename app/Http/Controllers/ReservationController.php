@@ -63,6 +63,12 @@ class ReservationController extends Controller
         $update = RoomTipe::find($id_room_tipe)->update([
             'stock'=> $triger ,
         ]);
+        $update = Room::where('id_room_tipe', $request->id_room_tipe)->take($request->quantity)->update([
+            'status' => 1,
+        ]);
+        // $update = Room::find($id_room_tipe)->update([
+        //     'stock'=> $triger ,
+        // ]);
         return redirect()->route('reservasi.index');
     }
     // public function update(Request $request, $id)

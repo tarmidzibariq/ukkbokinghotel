@@ -28,10 +28,10 @@
     @if(Auth::check())
     @if(Auth::user()->role == 'admin')
     @php
-        $roomtipe = ['room-tipe.index','room-tipe.create'];
+        $roomtipe = ['room-tipe.index','room-tipe.create','room-tipe.edit'];
         $rooms = ['room.index','room.create','room.edit'];
         $farooms = ['facility-room.index','facility-room.create','facility-room.edit'];
-        $bersatu = ['room-tipe.index','room-tipe.create', 'room.index','room.create','room.edit', 'facility-room.index','facility-room.create','facility-room.edit'];
+        $bersatu = ['room-tipe.index','room-tipe.create','room-tipe.edit', 'room.index','room.create','room.edit', 'facility-room.index','facility-room.create','facility-room.edit'];
     @endphp
     <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item {{ Request::routeIs($bersatu) ? 'active' : ''}}">

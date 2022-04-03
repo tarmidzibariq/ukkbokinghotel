@@ -189,9 +189,9 @@ $a = RoomTipe::all();
                                                 <form action="{{ route('reservasi.updatecekout',$item->id) }}"
                                                 method="post">
                                                 @csrf
-                                                <input type="text" name="quantity" value="{{ $item->quantity }}">
-                                                <input type="text" name="stock" value="{{ $a->where('id',$item->id_room_tipe)->first()->stock }}">
-                                                <input type="text" name="id_room_tipe" value="{{ $item->id_room_tipe }}">
+                                                <input type="hidden" name="quantity" value="{{ $item->quantity }}">
+                                                <input type="hidden" name="stock" value="{{ $a->where('id',$item->id_room_tipe)->first()->stock }}">
+                                                <input type="hidden" name="id_room_tipe" value="{{ $item->id_room_tipe }}">
                                                 <button type="submit" class="btn btn-success">Submit</button>
                                             </form>
                                         </div>
