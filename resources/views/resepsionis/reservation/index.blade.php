@@ -81,12 +81,13 @@ $a = RoomTipe::all();
                     <tr>
                         <th>No</th>
                         <th>Tanggal Dibuat</th>
+                        <th>Nama Pemesan</th>
                         <th>Nama Tamu</th>
                         <th>Cek-in</th>
                         <th>Cek-out</th>
                         <th>Tipe Kamar</th>
                         <th>Status</th>
-                        {{-- <th>Action</th> --}}
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -96,6 +97,7 @@ $a = RoomTipe::all();
                         <td>{{ $loop->iteration }}</td>
                         <td class="text-capitalize">
                             {{ Carbon\Carbon::parse($item->created_at)->isoFormat("ddd, D MMMM Y") }}</td>
+                        <td class="text-capitalize">{{ $item->nama }}</td>
                         <td class="text-capitalize">{{ $item->nama_tamu }}</td>
                         <td>{{ Carbon\Carbon::parse($item->tgl_masuk)->isoFormat("ddd, D MMMM Y") }}</td>
                         <td>{{ Carbon\Carbon::parse($item->tgl_keluar)->isoFormat("ddd, D MMMM Y") }}</td>
@@ -200,14 +202,10 @@ $a = RoomTipe::all();
                             </div>
                             @endif
                         </td>
-                                                @php
-                                                    // $roomstock = RoomTipe::where('id_room_tipe',$id_room_tipe)->get();
-                                                    // dd($roomstock);
-                                                @endphp
-                        {{-- <td>
-                                <a href="{{ route('reservasi.edit',$item->id) }}"><i class="fas fa-edit "
-                            style="color: #f39c12"></i></a>
-                        </td> --}}
+                        <td>
+                                <a href="{{ route('reservasi.edit',$item->id) }}"><i class="fas fa-eye "
+                            style="color: #123bf3"></i></a>
+                        </td>
                     </tr>
                     @endforeach
                 </tbody>

@@ -34,8 +34,9 @@ class ReservationController extends Controller
     {
         $reservation = Reservation::find($id);
         $selectroom = Room::all();   
-        $orderroom=OrderRoom::all();
-        return view('resepsionis.reservation.edit',compact('reservation','selectroom', 'orderroom'));
+        $roomtipe = RoomTipe::all();   
+        // $orderroom=OrderRoom::all();
+        return view('resepsionis.reservation.edit',compact('reservation','selectroom', 'roomtipe'));
     }
     public function updatebooking(Request $request, $id)
     {
@@ -63,7 +64,7 @@ class ReservationController extends Controller
         $update = RoomTipe::find($id_room_tipe)->update([
             'stock'=> $triger ,
         ]);
-        $update = Room::where('id_room_tipe', $request->id_room_tipe)->take($request->quantity)->update([
+        $update = Room::where('id_room_tipe', $request->id_room_tipe)->where('status', 0)->take($request->quantity)->update([
             'status' => 1,
         ]);
         // $update = Room::find($id_room_tipe)->update([

@@ -99,7 +99,7 @@ Route::group(['prefix' => 'reservasi', 'as' => 'reservasi.', 'middleware' => 'ch
     Route::post('/updatebooking/{id}', [ReservationController::class, 'updatebooking'])->name('updatebooking');
     Route::post('/updatecekin/{id}', [ReservationController::class, 'updatecekin'])->name('updatecekin');
     Route::post('/updatecekout/{id}', [ReservationController::class, 'updatecekout'])->name('updatecekout');
-    // Route::get('/edit/{id}', [ReservationController::class, 'edit'])->name('edit');
+    Route::get('/detail/{id}', [ReservationController::class, 'edit'])->name('edit');
     // Route::post('/update/{id}', [ReservationController::class, 'update'])->name('update');
     // Route::post('/filter', [ReservationController::class, 'filter'])->name('filter');
 });

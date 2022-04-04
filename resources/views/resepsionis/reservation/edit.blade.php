@@ -22,7 +22,7 @@
         <div class="d-flex align-items-center justify-content-between ">
             <div>
                 <a href="{{ route('reservasi.index') }}" class=" "><i
-                        class="fas fa-backspace fa-sm btn-outline "></a></i>&nbsp; <span>Edit Data</span>
+                        class="fas fa-backspace fa-sm btn-outline "></a></i>&nbsp; <span>Detail Data</span>
             </div>
             @if ($reservation->status == '0')
             <a href="#" type="submit" class="btn btn-danger btn-icon-split btn-sm">
@@ -59,120 +59,55 @@
     @php
     $select = $selectroom->where('id_room_tipe',$reservation->id_room_tipe);
     @endphp
-    <form action="{{ route('reservasi.update',$reservation->id) }}" method="post" enctype="multipart/form-data">
-        @csrf
+    <form action="" method="post" enctype="multipart/form-data">
+        {{-- @csrf --}}
         <div class="card-body">
             <div class="row">
                 <input type="hidden" class="form-control " id="id" name="id" value="" />
-                <div class="col-12 mt-2">
-                    <label for="" class="form-label">Status</label>
-                    <select name="status" class="form-control" required>
-                        {{-- <option value="{{ $reservation->status }}"
-                        selected>{{  $caristatus[$reservation->status][1] ?? ''}}</option> --}}
-                        <option value="0" {{ (old('status') ?? $reservation->status) == '0' ? 'selected' : '' }}>Cancel
-                        </option>
-                        <option value="1" {{ (old('status') ?? $reservation->status) == '1' ? 'selected' : '' }}>Booking
-                        </option>
-                        <option value="2" {{ (old('status') ?? $reservation->status) == '2' ? 'selected' : '' }}>Cek-in
-                        </option>
-                        <option value="3" {{ (old('status') ?? $reservation->status) == '3' ? 'selected' : '' }}>Cek-out
-                        </option>
-                    </select>
+                <div class="col-md-6 mt-2">
+                    <label for="" class="form-label">Nama Pemesan</label>
+                    <input type="text" value="{{ $reservation->nama }}" class="form-control" disabled>
                 </div>
-                <div class="col-12 mt-2">
-                    <label for="" class="form-label">Pilih Kamar</label>
-                    @if ($reservation->quantity == 1)
-                    <div class="mt-2">
-                        <select name="id_room1" class="form-control">
-                            <option value="" selected>Pilih Satu</option>
-                            @foreach ($select as $key)
-                            <option value="{{ $key->id }}">{{ $key->kode_kamar }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                    @endif
-                    @if ($reservation->quantity == 2)
-                    <div class="mt-2">
-                        <select name="id_room1" class="form-control">
-                            <option value="" selected>Pilih Satu</option>
-                            @foreach ($select as $key)
-                            <option value="{{ $key->id }}">{{ $key->kode_kamar }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                    <div class="mt-2">
-                        <select name="id_room2" class="form-control">
-                            <option value="" selected>Pilih Satu</option>
-                            @foreach ($select as $key)
-                            <option value="{{ $key->id }}">{{ $key->kode_kamar }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                    @endif
-                    @if ($reservation->quantity == 3)
-                    <div class="mt-2">
-                        <select name="id_room1" class="form-control">
-                            <option value="" selected>Pilih Satu</option>
-                            @foreach ($select as $key)
-                            <option value="{{ $key->id }}">{{ $key->kode_kamar }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                    <div class="mt-2">
-                        <select name="id_room2" class="form-control">
-                            <option value="" selected>Pilih Satu</option>
-                            @foreach ($select as $key)
-                            <option value="{{ $key->id }}">{{ $key->kode_kamar }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                    <div class="mt-2">
-                        <select name="id_room3" class="form-control">
-                            <option value="" selected>Pilih Satu</option>
-                            @foreach ($select as $key)
-                            <option value="{{ $key->id }}">{{ $key->kode_kamar }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                    @endif
-                    @if ($reservation->quantity == 4)
-                    <div class="mt-2">
-                        <select name="id_room1" class="form-control">
-                            <option value="" selected>Pilih Satu</option>
-                            @foreach ($select as $key)
-                            <option value="{{ $key->id }}">{{ $key->kode_kamar }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                    <div class="mt-2">
-                        <select name="id_room2" class="form-control">
-                            <option value="" selected>Pilih Satu</option>
-                            @foreach ($select as $key)
-                            <option value="{{ $key->id }}">{{ $key->kode_kamar }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                    <div class="mt-2">
-                        <select name="id_room3" class="form-control">
-                            <option value="" selected>Pilih Satu</option>
-                            @foreach ($select as $key)
-                            <option value="{{ $key->id }}">{{ $key->kode_kamar }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                    <div class="mt-2">
-                        <select name="id_room4" class="form-control">
-                            <option value="" selected>Pilih Satu</option>
-                            @foreach ($select as $key)
-                            <option value="{{ $key->id }}">{{ $key->kode_kamar }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                    @endif
+                <div class="col-md-6 mt-2">
+                    <label for="" class="form-label">Email</label>
+                    <input type="text" value="{{ $reservation->email }}" class="form-control" disabled>
                 </div>
-            </div>
-            <div class="d-sm-flex align-items-center justify-content-end mt-3">
-                <button type="submit" class="btn btn-sm btn-primary shadow-sm px-3">Submit</button>
+                <div class="col-md-6 mt-2">
+                    <label for="" class="form-label">Nomor Telephone</label>
+                    <input type="text" value="{{ $reservation->no_telp }}" class="form-control" disabled>
+                </div>
+                <div class="col-md-6 mt-2">
+                    <label for="" class="form-label">Nama Tamu</label>
+                    <input type="text" value="{{ $reservation->nama_tamu }}" class="form-control" disabled>
+                </div>
+                <div class="col-md-6 mt-2">
+                    <label for="" class="form-label">Jumlah Tamu</label>
+                    <input type="text" value="{{ $reservation->tamu }}" class="form-control" disabled>
+                </div>
+                <div class="col-md-6 mt-2">
+                    <label for="" class="form-label">Tipe Kamar</label>
+                    <input type="text" value="{{ $roomtipe->where('id',$reservation->id_room_tipe)->first()->nama }}" class="form-control" disabled>
+                </div>
+                <div class="col-md-6 mt-2">
+                    <label for="" class="form-label">Jumlah Kamar Dipesan</label>
+                    <input type="text" value="{{ $reservation->quantity }}" class="form-control" disabled>
+                </div>
+                <div class="col-md-6 mt-2">
+                    <label for="" class="form-label">Total</label>
+                    <input type="text" value="{{ 'IDR '.number_format($reservation->total) }}" class="form-control" disabled>
+                </div>
+                <div class="col-md-6 mt-2">
+                    <label for="" class="form-label">Cek-in</label>
+                    <input type="text" value="{{ Carbon\Carbon::parse($reservation->tgl_masuk)->isoFormat("ddd, D MMMM Y") }}" class="form-control" disabled>
+                </div>
+                <div class="col-md-6 mt-2">
+                    <label for="" class="form-label">Cek-out</label>
+                    <input type="text" value="{{ Carbon\Carbon::parse($reservation->tgl_keluar)->isoFormat("ddd, D MMMM Y") }}" class="form-control" disabled>
+                </div>
+                <div class="col-md-6 mt-2">
+                    <label for="" class="form-label">Tanggal Dibuat</label>
+                    <input type="text" value="{{ Carbon\Carbon::parse($reservation->created_at)->isoFormat("ddd, D MMMM Y") }}" class="form-control" disabled>
+                </div>
             </div>
         </div>
     </form>
