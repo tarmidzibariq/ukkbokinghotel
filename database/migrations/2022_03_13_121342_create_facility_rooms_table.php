@@ -15,8 +15,9 @@ class CreateFacilityRoomsTable extends Migration
     {
         Schema::create('facility_rooms', function (Blueprint $table) {
             $table->id();
-            $table->integer('id_room_tipe');
+            $table->unsignedBigInteger('id_room_tipe');
             $table->string('nama_barang');
+            $table->foreign('id_room_tipe')->references('id')->on('room_tipes')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }

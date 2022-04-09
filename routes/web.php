@@ -22,6 +22,15 @@ use App\Http\Controllers\LaporanController;
 Route::get('/bukti-reservasi', function () {
     return view('bukti-reservasi');
 });
+Route::get('/call-procedure', function () {
+
+    $postId = 1;
+    $getPost = DB::select(
+        'CALL cektamu(' . $postId . ')'
+    );
+
+    dd($getPost);
+});
 // Route::get('/bukti', function () {
 //     return view('bukti');
 // });

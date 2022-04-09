@@ -26,7 +26,9 @@ class CreateReservationsTable extends Migration
             $table->integer('total');
             $table->string('status')->nullable(); // 0 = cancel, 1 = booking, 2 = cek-in, 3 = cek-out
             $table->integer('id_room')->nullable();
-            $table->integer('id_room_tipe')->nullable();
+            // $table->integer('id_room_tipe')->nullable();
+            $table->unsignedBigInteger('id_room_tipe');
+            $table->foreign('id_room_tipe')->references('id')->on('room_tipes')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }
