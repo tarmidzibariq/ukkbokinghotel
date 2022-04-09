@@ -50,9 +50,39 @@ class ReservationController extends Controller
         $update = Reservation::find($id)->update([
             'status' => 3,
         ]);
+        $id_room_tipe = $request->id_room_tipe;
+        $triger = $request->stock + $request->quantity;
+        // $roomstock = RoomTipe::where('id',$id_room_tipe)->where('stock')->get();
+        // dd($roomstock);
+        $update = RoomTipe::find($id_room_tipe)->update([
+            'stock' => $triger,
+        ]);
+        $update = Room::where('id_room_tipe', $request->id_room_tipe)->where('status', 0)->take($request->quantity)->update([
+            'status' => 1,
+        ]);
         return redirect()->route('reservasi.index');
     }
-    public function updatecekout(Request $request, $id)
+    // public function updatecekout(Request $request, $id)
+    // {
+    //     $update = Reservation::find($id)->update([
+    //         'status' => 0,
+    //     ]);
+    //     $id_room_tipe = $request->id_room_tipe;
+    //     $triger = $request->stock + $request->quantity;
+    //     // $roomstock = RoomTipe::where('id',$id_room_tipe)->where('stock')->get();
+    //     // dd($roomstock);
+    //     $update = RoomTipe::find($id_room_tipe)->update([
+    //         'stock'=> $triger ,
+    //     ]);
+    //     $update = Room::where('id_room_tipe', $request->id_room_tipe)->where('status', 0)->take($request->quantity)->update([
+    //         'status' => 1,
+    //     ]);
+    //     // $update = Room::find($id_room_tipe)->update([
+    //     //     'stock'=> $triger ,
+    //     // ]);
+    //     return redirect()->route('reservasi.index');
+    // }
+    public function updatecancel(Request $request, $id)
     {
         $update = Reservation::find($id)->update([
             'status' => 0,
@@ -62,7 +92,7 @@ class ReservationController extends Controller
         // $roomstock = RoomTipe::where('id',$id_room_tipe)->where('stock')->get();
         // dd($roomstock);
         $update = RoomTipe::find($id_room_tipe)->update([
-            'stock'=> $triger ,
+            'stock' => $triger,
         ]);
         $update = Room::where('id_room_tipe', $request->id_room_tipe)->where('status', 0)->take($request->quantity)->update([
             'status' => 1,

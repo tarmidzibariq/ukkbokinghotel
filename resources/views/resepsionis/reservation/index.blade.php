@@ -123,15 +123,38 @@ $a = RoomTipe::all();
                                                 <span aria-hidden="true">×</span>
                                             </button>
                                         </div>
-                                        <div class="modal-body">Ubah status menjadi Cek-in?</div>
+                                        <div class="modal-body">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <h6 class="text-center ">Cancel pesanan ini?</h6>
+                                                    <div class="d-flex justify-content-center">
+                                                        <form action="{{ route('reservasi.updatecancel',$item->id) }}" method="post">
+                                                            @csrf
+                                                            <input type="hidden" name="status" value="{{ $item->status }}">
+                                                            <input type="hidden" name="quantity" value="{{ $item->quantity }}">
+                                                            <input type="hidden" name="stock" value="{{ $a->where('id',$item->id_room_tipe)->first()->stock }}">
+                                                            <input type="hidden" name="id_room_tipe" value="{{ $item->id_room_tipe }}">
+                                                            <button type="submit" class="btn btn-danger">Update Cancel</button>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <h6 class="text-center mt-3 mt-md-0">Ubah status menjadi Cek-in?</h6>
+                                                    <div class="d-flex justify-content-center">
+                                                        <form action="{{ route('reservasi.updatebooking',$item->id) }}" method="post">
+                                                            @csrf
+                                                            <input type="hidden" name="status" value="{{ $item->status }}">
+                                                            <button type="submit" class="btn btn-success">Update Cek-in</button>
+                                                        </form>
+                                                    </div>
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
                                         <div class="modal-footer">
                                             <button class="btn btn-secondary" type="button"
                                                 data-dismiss="modal">Cancel</button>
-                                            <form action="{{ route('reservasi.updatebooking',$item->id) }}" method="post">
-                                                @csrf
-                                                <input type="hidden" name="status" value="{{ $item->status }}">
-                                                <button type="submit" class="btn btn-success">Submit</button>
-                                            </form>
+                                            
                                         </div>
                                     </div>
                                 </div>
@@ -161,6 +184,9 @@ $a = RoomTipe::all();
                                                 method="post">
                                                 @csrf
                                                 <input type="hidden" name="status" value="{{ $item->status }}">
+                                                <input type="hidden" name="quantity" value="{{ $item->quantity }}">
+                                                <input type="hidden" name="stock" value="{{ $a->where('id',$item->id_room_tipe)->first()->stock }}">
+                                                <input type="hidden" name="id_room_tipe" value="{{ $item->id_room_tipe }}">
                                                 <button type="submit" class="btn btn-success">Submit</button>
                                             </form>
                                         </div>
@@ -169,8 +195,7 @@ $a = RoomTipe::all();
                             </div>
                             @endif
                             @if ($item->status == '3')
-                            <button class="btn btn-success btn-icon-split btn-sm mt-2 mt-md-0" data-toggle="modal"
-                                data-target="#update{{$item->id}}" type="submit">
+                            <button class="btn btn-success btn-icon-split btn-sm mt-2 mt-md-0"type="submit">
                                 <span class="text">Cek-out</span>
                             </button>
                             <div class="modal fade" id="update{{ $item->id }}" tab
@@ -186,16 +211,15 @@ $a = RoomTipe::all();
                                         </div>
                                         <div class="modal-body">Ubah status menjadi Cancel?</div>
                                         <div class="modal-footer">
-                                            <button class="btn btn-secondary" type="button"
-                                                data-dismiss="modal">Cancel</button>
-                                                <form action="{{ route('reservasi.updatecekout',$item->id) }}"
-                                                method="post">
-                                                @csrf
-                                                <input type="hidden" name="quantity" value="{{ $item->quantity }}">
+                                            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                                            {{-- <form action="{{ route('reservasi.updatecekout',$item->id) }}"
+                                            method="post">
+                                                @csrf --}}
+                                                {{-- <input type="hidden" name="quantity" value="{{ $item->quantity }}">
                                                 <input type="hidden" name="stock" value="{{ $a->where('id',$item->id_room_tipe)->first()->stock }}">
-                                                <input type="hidden" name="id_room_tipe" value="{{ $item->id_room_tipe }}">
+                                                <input type="hidden" name="id_room_tipe" value="{{ $item->id_room_tipe }}"> --}}
                                                 <button type="submit" class="btn btn-success">Submit</button>
-                                            </form>
+                                            {{-- </form> --}}
                                         </div>
                                     </div>
                                 </div>

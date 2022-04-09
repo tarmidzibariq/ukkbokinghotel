@@ -114,9 +114,9 @@
                                                                 <div class="card p-1">
                                                                     <select name="id_room_tipe" id="selectedit" class="form-control " required>
                                                                         <option value="" selected>--Chose One--</option>
-                                                                        <option value="{{ $item->id_room_tipe }} " selected>{{ $a->where('id',$item->id_room_tipe)->first()->nama }}</option>
-                                                                        @foreach ($roomtipe as $item)
-                                                                            <option value="{{ $item->id }}">{{ $item->nama }}</option>
+                                                                        {{-- <option value="{{ $item->id_room_tipe }} " selected>{{ $a->where('id',$item->id_room_tipe)->first()->nama }}</option> --}}
+                                                                        @foreach ($roomtipe as $room)
+                                                                            <option value="{{ $room->id }}"{{ $room->id == $item->id_room_tipe ? 'selected' : '' }}>{{ $room->nama }}</option>
                                                                         @endforeach
                                                                     </select>
                                                                 </div>

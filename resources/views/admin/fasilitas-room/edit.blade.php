@@ -27,9 +27,9 @@
                     <div class="form-control p-1">
                         <select name="id_room_tipe" id="select" class="form-control " required>
                             {{-- <option value="" selected>--Chose One--</option> --}}
-                            <option value="{{ $facilityroom->id_room_tipe }} " selected>{{ $a->where('id',$facilityroom->id_room_tipe)->first()->nama }}</option>
+                            {{-- <option value="{{ $facilityroom->id_room_tipe }} " selected>{{ $a->where('id',$facilityroom->id_room_tipe)->first()->nama }}</option> --}}
                             @foreach ($roomtipe as $item)
-                                <option value="{{ $item->id }}">{{ $item->nama }}</option>
+                                <option value="{{ $item->id }}" {{ $item->id == $facilityroom->id_room_tipe ? 'selected' : '' }}>{{ $item->nama }}</option>
                             @endforeach
                         </select>
                     </div>
