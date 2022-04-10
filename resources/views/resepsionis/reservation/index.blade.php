@@ -27,9 +27,10 @@ $a = RoomTipe::all();
                 <div class="col-4 col-lg-3 mt-2">
                     <div class="card p-1">
                         <select name="nama_tamu" class="form-control" id="select2">
-                            <option value="{{  $nama ?? '' }}">{{  $nama ?? ''}}</option>
+                            {{-- <option value="{{  $nama ?? '' }}">{{  $nama ?? ''}}</option> --}}
+                            <option value="" selected>--Chose One--</option>
                             @foreach ($nama_tamu as $item)
-                            <option value="{{ $item->nama_tamu }}">{{  $item->nama_tamu }}</option>
+                            <option value="{{ $item->nama_tamu }}" {{ $item->nama_tamu ==  $nama ? 'selected' : '' }}>{{  $item->nama_tamu }}</option>
                             @endforeach
                         </select>
                     </div>
@@ -37,10 +38,11 @@ $a = RoomTipe::all();
                 <div class="col-4 col-lg-3 mt-2">
                     <div class="card p-1">
                         <select name="id_room_tipe" class="form-control" id="select3">
-                            <option value="{{  $id_room_tipe ?? '' }}">
-                                {{  $a->where('id',$id_room_tipe)->first()->nama ?? ''}}</option>
+                            {{-- <option value="{{  $id_room_tipe ?? '' }}">
+                                {{  $a->where('id',$id_room_tipe)->first()->nama ?? ''}}</option> --}}
+                            <option value="" selected>--Chose One--</option>
                             @foreach ($roomtipe as $key)
-                            <option value="{{ $key->id }}">{{ $key->nama }}</option>
+                            <option value="{{ $key->id }}"  {{ $key->id == $id_room_tipe ? 'selected' : '' }}>{{ $key->nama }}</option>
                             @endforeach
                         </select>
                     </div>

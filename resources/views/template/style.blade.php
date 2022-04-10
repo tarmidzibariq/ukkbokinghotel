@@ -730,7 +730,7 @@ header .content .card .choice button:hover {
 }
 
 #hotels .list-room h4 {
-    font-size: 16px;
+    font-size: 18px;
 }
 
 #hotels .inputgrup .quantity-field {

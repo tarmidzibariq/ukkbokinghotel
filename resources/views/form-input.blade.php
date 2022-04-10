@@ -105,7 +105,7 @@
                                             <div class="d-flex justify-content-between border-bottom align-items-center">
                                                 <div>
                                                     <h4 class="mb-1 text-capitalize">{{ $item->nama }}</h4>
-                                                    <p class=" mb-1 " style="font-size: 14px; color: #8f8f8f;">{{'*Tersedia '.$item->stock  }}</p>
+                                                    <p class=" mb-1 " style=" color: #8f8f8f;">{{'*Tersedia '.$item->stock  }}</p>
                                                 </div>
                                                 <div>
                                                     <p class="m-0 text-danger text-end text-capitalize">{{ $item->deskripsi }}</p>

@@ -18,10 +18,10 @@
                 <div class="col-9">
                     <div class="card p-1">
                         <select name="id_room_tipe" class="form-control" id="select2">
-                            <option value="{{  $id_room_tipe ?? '' }}">{{  $roomtipe->where('id',$id_room_tipe)->first()->nama ?? ''}}</option>
-                            {{-- <option value=""></option> --}}
+                            {{-- <option value="{{  $id_room_tipe ?? '' }}">{{  $roomtipe->where('id',$id_room_tipe)->first()->nama ?? ''}}</option> --}}
+                            <option value=""></option>
                             @foreach ($roomtipe as $item)
-                                <option value="{{ $item->id }}">{{ $item->nama }}</option>
+                                <option value="{{ $item->id }}" {{ $item->id == $id_room_tipe ? 'selected' : '' }}>{{ $item->nama }}</option>
                             @endforeach
                         </select>
                     </div>
