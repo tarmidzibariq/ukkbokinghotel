@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\RoomTipe;
 use Illuminate\Support\Facades\Storage;
+use File;
 class RoomTipeController extends Controller
 {
     /**
@@ -47,14 +48,17 @@ class RoomTipeController extends Controller
             'deskripsi'=>'required',
             'gambar' => 'required|image|mimes:jpeg,jpg,png',
         ]);
+
         $gambar = $request->file('gambar');
-        $gambar->storeAs('public/rooms', $gambar->hashName());
+        $namaFile = time() . rand(100, 999) . "." . $gambar->getClientOriginalExtension();
+        $gambar->move(public_path() . '/upload-image/rooms', $namaFile);
+        // $gambar->storeAs('public/rooms', $gambar->hashName());
         RoomTipe::create([
             'nama'=>$request->nama,
             'kapasitas'=>$request->kapasitas,
             'harga'=>$request->harga,
             'deskripsi'=>$request->deskripsi,
-            'gambar' => $gambar->hashName(),
+            'gambar' => $namaFile,
             'stock' => 0,
         ]);
         return redirect('room-tipe');
@@ -97,15 +101,19 @@ class RoomTipeController extends Controller
             $request->validate([
                 'gambar' => 'image|mimes:jpeg,jpg,png',
             ]);
-            Storage::disk('local')->delete('public/rooms/' . basename($roomtipe->gambar));
+            // Storage::disk('local')->delete('public/rooms/' . basename($roomtipe->gambar));
+            File::delete(public_path() . "/upload-image/rooms/$roomtipe->gambar");
             $gambar = $request->file('gambar');
-            $gambar->storeAs('public/rooms', $gambar->hashName());
+            // $gambar->storeAs('public/rooms', $gambar->hashName());
+            
+            $namaFile = time() . rand(100, 999) . "." . $gambar->getClientOriginalExtension();
+            $gambar->move(public_path() . '/upload-image/rooms', $namaFile);
             $update = RoomTipe::find($id)->update([
                 'nama' => $request->nama,
                 'kapasitas' => $request->kapasitas,
                 'harga' => $request->harga,
                 'deskripsi' => $request->deskripsi,
-                'gambar' => $gambar->hashName(),
+                'gambar' => $namaFile,
             ]);
         }else{
             $update = RoomTipe::find($id)->update([
@@ -129,7 +137,8 @@ class RoomTipeController extends Controller
     {
         $roomtipe = RoomTipe::find($id);
         // dd($roomtipe);
-        Storage::disk('local')->delete('public/rooms/' . basename($roomtipe->gambar));
+        // Storage::disk('local')->delete('public/rooms/' . basename($roomtipe->gambar));
+        File::delete(public_path() . "/upload-image/rooms/$roomtipe->gambar");
         RoomTipe::find($id)->delete();
         return redirect('room-tipe');
     }

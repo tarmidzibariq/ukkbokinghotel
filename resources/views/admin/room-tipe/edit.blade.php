@@ -40,7 +40,7 @@
             <div class="mt-3 d-flex justify-content-center">
                 <div class="card card-gambar">
                     <div class="card-body p-0">
-                        <img src="{{ asset('storage/rooms/'.$roomtipe->gambar) }}" alt="" class="card-img-top" id="gambar">
+                        <img src="{{ asset('upload-image/rooms/'.$roomtipe->gambar) }}" alt="" class="card-img-top" id="gambar">
                         <div class="d-flex justify-content-center">
                             <p class="btn btn-sm btn-primary shadow-sm px-3 my-2" id="pilih">Upload Image</p>
                         </div>

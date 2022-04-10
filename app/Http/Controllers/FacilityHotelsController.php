@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Models\FacilityHotel;
+use File;
 class FacilityHotelsController extends Controller
 {
     public function __construct()
@@ -47,11 +48,13 @@ class FacilityHotelsController extends Controller
             'gambar' => 'required|image|mimes:jpeg,jpg,png',
         ]);
         $gambar = $request->file('gambar');
-        $gambar->storeAs('public/facilityhotel', $gambar->hashName());
+        $namaFile = time() . rand(100, 999) . "." . $gambar->getClientOriginalExtension();
+        $gambar->move(public_path() . '/upload-image/facilityhotel', $namaFile);
+        // $gambar->storeAs('public/facilityhotel', $gambar->hashName());
         FacilityHotel::create([
             'nama_barang' => $request->nama_barang,
             'banyak_barang' => $request->banyak_barang,
-            'gambar' => $gambar->hashName(),
+            'gambar' => $namaFile,
         ]);
         return redirect('facility-hotels');
     }
@@ -96,13 +99,16 @@ class FacilityHotelsController extends Controller
                 'gambar' => 'image|mimes:jpeg,jpg,png',
             ]);
 
-            Storage::disk('local')->delete('public/facilityhotel/' . basename($facilityhotel->gambar));
+            // Storage::disk('local')->delete('public/facilityhotel/' . basename($facilityhotel->gambar));
+            File::delete(public_path() . "/upload-image/facilityhotel/$facilityhotel->gambar");
             $gambar = $request->file('gambar');
-            $gambar->storeAs('public/facilityhotel', $gambar->hashName());
+            // $gambar->storeAs('public/facilityhotel', $gambar->hashName());
+            $namaFile = time() . rand(100, 999) . "." . $gambar->getClientOriginalExtension();
+            $gambar->move(public_path() . '/upload-image/facilityhotel', $namaFile);
             $update = FacilityHotel::find($id)->update([
                 'nama_barang' => $request->nama_barang,
                 'banyak_barang' => $request->banyak_barang,
-                'gambar' => $gambar->hashName(),
+                'gambar' => $namaFile,
             ]);
         } else {
             $update = FacilityHotel::find($id)->update([
@@ -123,7 +129,8 @@ class FacilityHotelsController extends Controller
     {
         $facilityhotel = FacilityHotel::find($id);
         // dd($facilityhotel);
-        Storage::disk('local')->delete('public/facilityhotel/' . basename($facilityhotel->gambar));
+        // Storage::disk('local')->delete('public/facilityhotel/' . basename($facilityhotel->gambar));
+        File::delete(public_path() . "/upload-image/facilityhotel/$facilityhotel->gambar");
         
         FacilityHotel::find($id)->delete();
         return redirect('facility-hotels');

@@ -136,7 +136,7 @@
                 @foreach ($facilityhotel as $item)
                     <div class="col-lg-6 mt-3 ">
                         <div class="content ms-lg-5">
-                            <img src="{{ asset('storage/facilityhotel/'.$item->gambar) }}" alt="" class="">
+                            <img src="{{ asset('upload-image/facilityhotel/'.$item->gambar) }}" alt="" class="">
                             <div class="overlay">
                                 <div class="text">
                                     <h3 class="text-capitalize">{{ $item->nama_barang }}</h3>

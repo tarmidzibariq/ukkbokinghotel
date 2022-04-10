@@ -97,10 +97,10 @@
                             @foreach ($roomtipe as $item)
                                 @if ($item->stock > 0)
                                     <div class="row py-3 px-3 bg-white shadow list-room mt-3 rounded">
-                                    <div class="col-5 col-lg-4">
-                                        <img src="{{ asset('storage/rooms/'.$item->gambar) }}" alt="" class=" rounded">
+                                    <div class="col-12 col-lg-4">
+                                        <img src="{{ asset('upload-image/rooms/'.$item->gambar) }}" alt="" class=" rounded">
                                     </div>
-                                    <div class="col-7-lg-8 col">
+                                    <div class="col-12 col-lg-8 mt-3 mt-lg-0">
                                         <div class="title">
                                             <div class="d-flex justify-content-between border-bottom align-items-center">
                                                 <div>

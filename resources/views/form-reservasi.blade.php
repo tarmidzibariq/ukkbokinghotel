@@ -126,7 +126,7 @@
                                                     <div class="card-body detail-pemesanan">
                                                         <div class="row align-items-center">
                                                             <div class="col-4">
-                                                                <div style="background-image: url({{ asset('storage/rooms/'.$roomtipe->gambar) }}); " class="gambar"></div>
+                                                                <div style="background-image: url({{ asset('upload-image/rooms/'.$roomtipe->gambar) }}); " class="gambar"></div>
                                                             </div>
                                                             <div class="col-8">
                                                                 <h5 style="font-size: 16px; color:#4a4a4a; font-weight:500;" class="mb-1 text-capitalize">{{ $roomtipe->nama }} </h5>

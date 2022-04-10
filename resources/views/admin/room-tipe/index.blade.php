@@ -31,7 +31,7 @@
                         <tr>
                             <td>{{ $loop->iteration }}</td>
                             <td>{{ $item->nama }}</td>
-                            <td><img src="{{ asset('storage/rooms/'.$item->gambar) }}" alt="" width="80"></td>
+                            <td><img src="{{ asset('upload-image/rooms/'.$item->gambar) }}" alt="" width="80"></td>
                             <td>@php
                                 if (!empty($item->stock)) {
                                 echo $item->stock;
