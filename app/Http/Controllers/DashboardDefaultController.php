@@ -72,9 +72,9 @@ class DashboardDefaultController extends Controller
         
         $triger = $request->stock - $request->quantity;
         // dd($triger);
-        $update = RoomTipe::find($request->id_room_tipe)->update([
-            'stock' => $triger,
-        ]);
+        // $update = RoomTipe::find($request->id_room_tipe)->update([
+        //     'stock' => $triger,
+        // ]);
         $update = Room::where('id_room_tipe', $request->id_room_tipe)->where('status',1)->take($request->quantity)->update([
             'status'=> 0,
         ]);
